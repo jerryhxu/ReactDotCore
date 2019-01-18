@@ -1,0 +1,790 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoxAuto.Vince.InventoryManagementService.Pipelines</name>
+    </assembly>
+    <members>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Authorization.AuthorizationResult">
+            <summary>
+            A result dto output by the execution of an <see cref="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Authorization.IRequestAuthorizer`1"/>.
+            </summary>
+            <remarks>Indicates whether the current user is authorized to execute the pipeline request.</remarks>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Authorization.AuthorizationResult.IsAuthorized">
+            <summary>
+            Gets or sets a value indicating whether the request can be executed based on the current user.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Authorization.AuthorizationResult.Messages">
+            <summary>
+            Gets or sets a list of messages describing authorization errors, if any.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Authorization.AuthorizationResult.Success">
+            <summary>
+            Creates a successful authorization result.
+            </summary>
+            <returns>An authorization result indicating a successful authorization</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Authorization.AuthorizationResult.Error(CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ErrorMessage[])">
+            <summary>
+            Creates a failed authorization result.
+            </summary>
+            <param name="errors">Any descriptions of errors that occurred during authoriztion</param>
+            <returns>An authorization result indicating failed authorization and the reasons why</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Authorization.IRequestAuthorizer`1">
+            <summary>
+            The interface for an authorizer that checks whether a pipeline request can be executed given the current user context.
+            </summary>
+            <typeparam name="TRequest">The type of the pipeline request being authorized</typeparam>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Authorization.IRequestAuthorizer`1.Authorize(`0)">
+            <summary>
+            Authorizes the given pipeline request for the current user context.
+            </summary>
+            <param name="request">The pipeline request to authorize</param>
+            <returns>A result indicating the success or failure result of the authorization</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestAuthorizationBehavior`2">
+            <summary>
+            The pipeline step that executes all configured <see cref="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Authorization.IRequestAuthorizer`1"/>s on a given pipeline request.
+            Use this behavior to execute any needed validation steps on a pipeline request prior to request handling, e.g. making sure the current user has the right Access Control permissions for the request.
+            </summary>
+            <remarks>
+            This behavior executes all authorizers one at a time, in the order that they are configured/injected.
+            </remarks>
+            <typeparam name="TRequest">The type of the pipeline request to be handled</typeparam>
+            <typeparam name="TResponse">The type of the expected result output from the pipeline execution</typeparam>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestAuthorizationBehavior`2._requestAuthorizers">
+            <summary>
+            The list of authorizers to be executed on the pipeline request.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestAuthorizationBehavior`2._metricLogger">
+            <summary>
+            The logger instance that logs metrics about the pipeline.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestAuthorizationBehavior`2._logger">
+            <summary>
+            The logger instance that logs information, warnings, errors about the pipeline.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestAuthorizationBehavior`2.#ctor(CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Authorization.IRequestAuthorizer{`0}[],CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestAuthorizationBehavior{`0,`1}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestAuthorizationBehavior`2"/> class.
+            </summary>
+            <param name="requestAuthorizers">The authorizers to execute on the pipeline request</param>
+            <param name="metricLogger">A logger instance for recording pipeline metrics</param>
+            <param name="logger">A logger instance</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestAuthorizationBehavior`2.Handle(`0,System.Threading.CancellationToken,MediatR.RequestHandlerDelegate{`1})">
+            <summary>
+            Handles execution of all configured authorizers on a pipeline request, prior to executing the rest of the pipeline steps on the request.
+            </summary>
+            <param name="request">The request to be executed in the pipeline</param>
+            <param name="cancellationToken">A token that can be used to cancel handler execution</param>
+            <param name="next">A delegate to execute the subsequent steps of the pipeline</param>
+            <returns>A response output of the pipeline executed request</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestHandlingBehavior`2">
+            <summary>
+            The pipeline step that executes the configured <see cref="T:MediatR.IRequestHandler`2"/> for a given pipeline request.
+            </summary>
+            <remarks>
+            This Pipeline behavior MUST be injected as the very last pipeline behavior binding so that the "next" delegate is specifically targeting the IRequestHandler.
+            </remarks>
+            <typeparam name="TRequest">The type of the request being handled.</typeparam>
+            <typeparam name="TResponse">The type of the output response.</typeparam>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestHandlingBehavior`2._metricLogger">
+            <summary>
+            The logger instance that logs metrics about the pipeline.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestHandlingBehavior`2._logger">
+            <summary>
+            The logger instance that logs information, warnings, errors about the pipeline.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestHandlingBehavior`2.#ctor(CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestHandlingBehavior{`0,`1}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestHandlingBehavior`2"/> class.
+            </summary>
+            <param name="metricLogger">A logger instance for recording pipeline metrics</param>
+            <param name="logger">A logger instance</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestHandlingBehavior`2.Handle(`0,System.Threading.CancellationToken,MediatR.RequestHandlerDelegate{`1})">
+            <summary>
+            Handles the execution of the configured request handler, while logging timings and any errors that occur during handler execution.
+            </summary>
+            <param name="request">The request to be executed in the pipeline</param>
+            <param name="cancellationToken">A token that can be used to cancel handler execution</param>
+            <param name="next">A delegate to execute the actual handling of the pipeline request</param>
+            <returns>The response output of the pipeline executed request</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestLoggingBehavior`2">
+            <summary>
+            The pipeline step that logs the start of the request pipeline execution for a given pipeline request.
+            </summary>
+            <remarks>This behavior should always be injected to execute first to ensure that all subsequent behaviors inherit the shared logging properties</remarks>
+            <typeparam name="TRequest">The type of the pipeline request to be handled</typeparam>
+            <typeparam name="TResponse">The type of the expected result output from the pipeline execution</typeparam>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestLoggingBehavior`2._metricLogger">
+            <summary>
+            The logger instance that logs metrics about the pipeline.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestLoggingBehavior`2._logger">
+            <summary>
+            The logger instance that logs information, warnings, errors about the pipeline.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestLoggingBehavior`2.#ctor(CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestLoggingBehavior{`0,`1}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestLoggingBehavior`2"/> class.
+            </summary>
+            <param name="metricLogger">A logger instance for recording pipeline metrics</param>
+            <param name="logger">A logger instance</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestLoggingBehavior`2.Handle(`0,System.Threading.CancellationToken,MediatR.RequestHandlerDelegate{`1})">
+            <summary>
+            Handles the initialization of shared logging properties for the execution of a request through the configured pipeline.
+            </summary>
+            <param name="request">The request to handle</param>
+            <param name="cancellationToken">A token that can be used to cancel handler execution</param>
+            <param name="next">A delegate to execute the subsequent steps of the pipeline</param>
+            <returns>The response output of the pipeline executed request</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPostProcessingBehavior`2">
+            <summary>
+            The pipeline step that executes all configured <see cref="T:MediatR.Pipeline.IRequestPostProcessor`2"/>s for a given pipeline request.
+            Use this behavior to trigger any activities that need to be executed on a completed pipeline result, e.g. emitting events to alert others of the executed action.
+            </summary>
+            <remarks>
+            This behavior executes all post-processors one at a time, in the order that they are configured/injected.
+            This behavior should be injected to execute BEFORE the primary request handler step to be able to capture the response and execute post-processors on it.
+            </remarks>
+            <typeparam name="TRequest">The type of the pipeline request to be handled</typeparam>
+            <typeparam name="TResponse">The type of the expected result output from the pipeline execution</typeparam>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPostProcessingBehavior`2._postProcessors">
+            <summary>
+            The list of post-processors to be executed on the pipeline response.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPostProcessingBehavior`2._metricLogger">
+            <summary>
+            The logger instance that logs metrics about the pipeline.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPostProcessingBehavior`2._logger">
+            <summary>
+            The logger instance that logs information, warnings, errors about the pipeline.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPostProcessingBehavior`2.#ctor(MediatR.Pipeline.IRequestPostProcessor{`0,`1}[],CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPostProcessingBehavior{`0,`1}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPostProcessingBehavior`2"/> class.
+            </summary>
+            <param name="postProcessors">The post-processors to execute on the pipeline response</param>
+            <param name="metricLogger">A logger instance for recording pipeline metrics</param>
+            <param name="logger">A logger instance</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPostProcessingBehavior`2.Handle(`0,System.Threading.CancellationToken,MediatR.RequestHandlerDelegate{`1})">
+            <summary>
+            Handles the execution of all configured post-processors on a pipeline response, after executing the rest of the pipeline on the initiating request.
+            </summary>
+            <remarks>Executes the <paramref name="next"/> delegate to obtain a pipeline reponse result before execting all post-processors on it</remarks>
+            <param name="request">The request to be executed in the pipeline</param>
+            <param name="cancellationToken">A token that can be used to cancel handler execution</param>
+            <param name="next">A delegate to execute the subsequent steps of the pipeline</param>
+            <returns>The response output of the pipeline executed request</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPreProcessingBehavior`2">
+            <summary>
+            The pipeline step that executes all configured <see cref="T:MediatR.Pipeline.IRequestPreProcessor`1"/>s for a given pipeline request.
+            Use this behavior to trigger an activities that need to be executed on a pipeline request prior to request handling, e.g. normalizing request data.
+            </summary>
+            <remarks>
+            This behavior executes all post-processors one at a time, in the order that they are configured/injected.
+            </remarks>
+            <typeparam name="TRequest">The type of the pipeline request to be handled</typeparam>
+            <typeparam name="TResponse">The type of the expected result output from the pipeline execution</typeparam>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPreProcessingBehavior`2._preProcessors">
+            <summary>
+            The list of pre-processors to be executed on the pipeline request.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPreProcessingBehavior`2._metricLogger">
+            <summary>
+            The logger instance that logs metrics about the pipeline.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPreProcessingBehavior`2._logger">
+            <summary>
+            The logger instance that logs information, warnings, errors about the pipeline.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPreProcessingBehavior`2.#ctor(MediatR.Pipeline.IRequestPreProcessor{`0}[],CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPreProcessingBehavior{`0,`1}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPreProcessingBehavior`2"/> class.
+            </summary>
+            <param name="preProcessors">The pre-processors to execute on the pipeline request</param>
+            <param name="metricLogger">A logger instance for recording pipeline metrics</param>
+            <param name="logger">A logger instance</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestOrderedPreProcessingBehavior`2.Handle(`0,System.Threading.CancellationToken,MediatR.RequestHandlerDelegate{`1})">
+            <summary>
+            Handles the execution of all configured pre-processors on a pipeline request, prior to executing the rest of the pipeline steps on the request.
+            </summary>
+            <param name="request">The request to be executed in the pipeline</param>
+            <param name="cancellationToken">A token that can be used to cancel handler execution</param>
+            <param name="next">A delegate to execute the subsequent steps of the pipeline</param>
+            <returns>A response output of the pipeline executed request</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestValidationBehavior`2">
+            <summary>
+            The pipeline step that executes all configured <see cref="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Validation.IRequestValidator`1"/>s on a given pipeline request.
+            Use this behavior to execute any needed validation steps on a pipeline request prior to request handling, e.g. making sure required properties are set.
+            </summary>
+            <remarks>
+            This behavior executes all validators one at a time, in the order that they are configured/injected.
+            </remarks>
+            <typeparam name="TRequest">The type of the pipeline request to be handled</typeparam>
+            <typeparam name="TResponse">The type of the expected result output from the pipeline execution</typeparam>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestValidationBehavior`2._requestValidators">
+            <summary>
+            The list of validators to be executed on the pipeline request.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestValidationBehavior`2._metricLogger">
+            <summary>
+            The logger instance that logs metrics about the pipeline.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestValidationBehavior`2._logger">
+            <summary>
+            The logger instance that logs information, warnings, errors about the pipeline.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestValidationBehavior`2.#ctor(CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Validation.IRequestValidator{`0}[],CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestValidationBehavior{`0,`1}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestValidationBehavior`2"/> class.
+            </summary>
+            <param name="requestValidators">The validators to execute on the pipeline request</param>
+            <param name="metricLogger">A logger instance for recording pipeline metrics</param>
+            <param name="logger">A logger instance</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.RequestValidationBehavior`2.Handle(`0,System.Threading.CancellationToken,MediatR.RequestHandlerDelegate{`1})">
+            <summary>
+            Handles the execution of all configured validators on a pipeline request, prior to executing the rest of the pipeline steps on the request.
+            </summary>
+            <param name="request">The request to be executed in the pipeline</param>
+            <param name="cancellationToken">A token that can be used to cancel handler execution</param>
+            <param name="next">A delegate to execute the subsequent steps of the pipeline</param>
+            <returns>A response output of the pipeline executed request</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Validation.IRequestValidator`1">
+            <summary>
+            The interface for a validator that checks the inputs of a pipeline request.
+            </summary>
+            <typeparam name="TRequest">The type of the pipeline request being validated</typeparam>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Validation.IRequestValidator`1.Validate(`0)">
+            <summary>
+            Validates the inputs of the given pipeline request prior to execution.
+            </summary>
+            <param name="request">The pipeline request to validate</param>
+            <returns>A result indicating the success or failure result of the validation</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Validation.ValidationResult">
+            <summary>
+            A result dto output by the execution of an <see cref="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Validation.IRequestValidator`1"/>.
+            </summary>
+            <remarks>Indicates whether the current pipeline request is valid enough to be executed.</remarks>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Validation.ValidationResult.IsValid">
+            <summary>
+            Gets or sets a value indicating whether the request is valid for pipeline execution.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Validation.ValidationResult.Messages">
+            <summary>
+            Gets or sets a list of messages describing validation errors, if any.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Validation.ValidationResult.Success">
+            <summary>
+            Creates a successful validation result.
+            </summary>
+            <returns>A validation result indicating a successful validation</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Validation.ValidationResult.Error(CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ErrorMessage[])">
+            <summary>
+            Creates a failed validation result.
+            </summary>
+            <param name="errors">Any descriptions of errors that occurred during validation</param>
+            <returns>A validation result indicating a failed validation and the reasons why</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ErrorMessage">
+            <summary>
+            Error message object
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ErrorMessage.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ErrorMessage"/> class.
+            </summary>
+            <param name="message">description</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ErrorMessage.Message">
+            <summary>
+            gets or sets error messages
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ErrorMessage.Properties">
+            <summary>
+            Gets or sets get or sets additional error information
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.IPipelineRequest`1">
+            <summary>
+            The interface for a request that can be executed in a pipeline.
+            </summary>
+            <typeparam name="TResponse">The type of the response output by the execution of this request</typeparam>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.IPipelineResponse">
+            <summary>
+            The interface for a response that results from the execution of a pipeline request.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.IPipelineResponse.Status">
+            <summary>
+            Gets or sets a status indicating the result of the pipeline execution.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.IPipelineResponse.Messages">
+            <summary>
+            Gets or sets a list of errors that occurred during pipeline execution, if any.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus">
+            <summary>
+            Enumerates the status that can result from the execution of a pipeline request.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus.Success">
+            <summary>
+            A status that indicates the pipeline request was executed successfully.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus.NoContent">
+            <summary>
+            A status that indicates the pipeline request was executed successfully.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus.Unsuccessful">
+            <summary>
+            A status that indicates the pipeline request failed because execution of the request would transform the resource into an invalid state.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus.NotModified">
+            <summary>
+            A status that indicates the pipeline request to retrieve a resource did not return a document because it has not been modified since the last retrieval.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus.KeyNotFound">
+            <summary>
+            A status that indicates the pipeline request failed because the target resource could not be found.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus.VersionConflict">
+            <summary>
+            A status that indicates the pipeline request failed because the target resource was not in the expected state.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus.InternalError">
+            <summary>
+            A status that indicates the pipeline request failed because of an unexpected internal error.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus.OperationTimeout">
+            <summary>
+            A status that indicates the pipeline request failed because of one or more operations took too long.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus.InvalidData">
+            <summary>
+            A status that indicates that the pipeline request could not be executed because of invalid inputs.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus.Unauthorized">
+            <summary>
+            A status that indicates that the pipeline request could not be executed because the requester is not authorized for the requested action.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus.Forbidden">
+            <summary>
+            A status that indicates that the pipeline request could not be executed because business rules prevents this action.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.CloudwatchPipelineMetricLogger">
+            <summary>
+            A logger that stores, aggregates, and forwards metrics on request pipeline operations to CloudWatch.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.CloudwatchPipelineMetricLogger.LogAuthorizerRuntime(System.String,System.String,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.CloudwatchPipelineMetricLogger.LogAuthorizationTotalRuntime(System.String,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.CloudwatchPipelineMetricLogger.LogValidatorRuntime(System.String,System.String,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.CloudwatchPipelineMetricLogger.LogValidatationTotalRuntime(System.String,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.CloudwatchPipelineMetricLogger.LogPreProcessorRuntime(System.String,System.String,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.CloudwatchPipelineMetricLogger.LogPreProcessingTotalRuntime(System.String,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.CloudwatchPipelineMetricLogger.LogHandlingRuntime(System.String,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.CloudwatchPipelineMetricLogger.LogPostProcessorRuntime(System.String,System.String,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.CloudwatchPipelineMetricLogger.LogPostProcessingTotalRuntime(System.String,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.CloudwatchPipelineMetricLogger.LogPipelineTotalRuntime(System.String,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger">
+            <summary>
+            The interface for a logger that publishes metrics on request pipeline operations to CloudWatch.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger.LogAuthorizerRuntime(System.String,System.String,System.TimeSpan)">
+            <summary>
+            Logs the execution time of an authorizer on a pipeline request.
+            </summary>
+            <param name="requestType">The type of the pipeline request</param>
+            <param name="authorizerType">The type of the authorizer that was executed on the request</param>
+            <param name="duration">The execution time of the authorizer</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger.LogAuthorizationTotalRuntime(System.String,System.TimeSpan)">
+            <summary>
+            Logs the execution time of all authorizers on a pipeline request.
+            </summary>
+            <param name="requestType">The type of the pipeline request</param>
+            <param name="duration">The total execution time of all the authorizers</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger.LogValidatorRuntime(System.String,System.String,System.TimeSpan)">
+            <summary>
+            Logs the execution time of a validator on a pipeline request.
+            </summary>
+            <param name="requestType">The type of the pipeline request</param>
+            <param name="validatorType">The type of the validator that was executed on the request</param>
+            <param name="duration">The execution time of the validator</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger.LogValidatationTotalRuntime(System.String,System.TimeSpan)">
+            <summary>
+            Logs the execution time of all validators on a pipeline request.
+            </summary>
+            <param name="requestType">The type of the pipeline request</param>
+            <param name="duration">The total execution time of all the validators</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger.LogPreProcessorRuntime(System.String,System.String,System.TimeSpan)">
+            <summary>
+            Logs the execution time of a pre-processor on a pipeline request
+            </summary>
+            <param name="requestType">The type of the pipeline request</param>
+            <param name="preProcessorType">The type of the pre-processor that was executed on the request</param>
+            <param name="duration">The execution time of the pre-processor</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger.LogPreProcessingTotalRuntime(System.String,System.TimeSpan)">
+            <summary>
+            Logs the execution time of all pre-processors on a pipeline request.
+            </summary>
+            <param name="requestType">The type of the pipeline request</param>
+            <param name="duration">The total execution time of all the pre-processors</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger.LogHandlingRuntime(System.String,System.TimeSpan)">
+            <summary>
+            Logs the execution time of the handling of a pipeline request.
+            </summary>
+            <param name="requestType">The type of the pipeline request</param>
+            <param name="duration">The execution time of the handler</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger.LogPostProcessorRuntime(System.String,System.String,System.TimeSpan)">
+            <summary>
+            Logs the execution time of a post-processor on a pipeline request.
+            </summary>
+            <param name="requestType">The type of the pipeline request</param>
+            <param name="postProcessorType">The type of the pre-processor that was executed on the request</param>
+            <param name="duration">The execution time of the pre-processor</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger.LogPostProcessingTotalRuntime(System.String,System.TimeSpan)">
+            <summary>
+            Logs the execution time of all post-processors on a pipeline request.
+            </summary>
+            <param name="requestType">The type of the pipeline request</param>
+            <param name="duration">The total execution time of all the post-processors</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.IPipelineMetricLogger.LogPipelineTotalRuntime(System.String,System.TimeSpan)">
+            <summary>
+            Logs the total execution time of a pipeline request.
+            </summary>
+            <param name="requestType">The type of the pipeline request</param>
+            <param name="duration">The total execution time of all pipeline steps</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LoggerExtensions">
+            <summary>
+            An extension class with helper methods to work with <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instances.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LoggerExtensions.WithScopeProperty``1(Microsoft.Extensions.Logging.ILogger{``0},System.String,System.Object)">
+            <summary>
+            Creates a new logger scope to decorate all log entries with the provided property key and value.
+            </summary>
+            <typeparam name="TCategory">The category of the logger</typeparam>
+            <param name="logger">The logger instance</param>
+            <param name="key">The name of the log property to add to logs</param>
+            <param name="value">The value of the log property to add to logs</param>
+            <returns>A disposable logger scope</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants">
+            <summary>
+            Log property name constants to be used as log property decorators.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.RequestId">
+            <summary>
+            The log property name for RequestId.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.PipelineRequestType">
+            <summary>
+            The log property name for PipelineRequestType.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.PipelineStep">
+            <summary>
+            The log property name for PipelineStep.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.PipelineTotalRuntimeMs">
+            <summary>
+            The log property name for PipelineTotalRuntimeMs.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.AuthorizerType">
+            <summary>
+            The log property name for AuthorizerType.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.AuthorizerRuntimeMs">
+            <summary>
+            The log property name for AuthorizerRuntimeMs.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.AuthorizerCount">
+            <summary>
+            The log property name for AuthorizerCount.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.AuthorizationTotalRuntimeMs">
+            <summary>
+            The log property name for AuthorizationTotalRuntimeMs.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.ValidatorType">
+            <summary>
+            The log property name for ValidatorType.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.ValidatorRuntimeMs">
+            <summary>
+            The log property name for ValidatorRuntimeMs.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.ValidatorCount">
+            <summary>
+            The log property name for ValidatorCount.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.ValidationTotalRuntimeMs">
+            <summary>
+            The log property name for ValidationTotalRuntimeMs.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.PreProcessorType">
+            <summary>
+            The log property name for PreProcessorType.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.PreProcessorRuntimeMs">
+            <summary>
+            The log property name for PreProcessorRuntimeMs.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.PreProcessorCount">
+            <summary>
+            The log property name for PreProcessorCount.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.PreProcessingTotalRuntimeMs">
+            <summary>
+            The log property name for PreProcessingTotalRuntimeMs.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.HandlerType">
+            <summary>
+            The log property name for HandlerType.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.HandlingTotalRuntimeMs">
+            <summary>
+            The log property name for HandlingTotalRuntimeMs.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.PostProcessorType">
+            <summary>
+            The log property name for PostProcessorType.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.PostProcessorRuntimeMs">
+            <summary>
+            The log property name for PostProcessorRuntimeMs.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.PostProcessorCount">
+            <summary>
+            The log property name for PostProcessorCount.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.PostProcessingTotalRuntimeMs">
+            <summary>
+            The log property name for PostProcessingTotalRuntimeMs.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.LogPropertyConstants.ExceptionType">
+            <summary>
+            The log property name for ExceptionType.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.PipelineEventConstants">
+            <summary>
+            Log <see cref="T:Microsoft.Extensions.Logging.EventId"/> constants to be used when logging pipeline events.
+            </summary>
+            TODO: See if we can figure out a pattern for these event id numbers that will make it easier to classify and collect metrics on the types of events happing in our logs.
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.PipelineEventConstants.PreProcessingError">
+            <summary>
+            Gets the EventId to log with pre-processing errors.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.PipelineEventConstants.ValidationError">
+            <summary>
+            Gets the EventId to log with validation errors.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.PipelineEventConstants.AuthorizationError">
+            <summary>
+            Gets the EventId to log with authorization errors.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.PipelineEventConstants.HandlingError">
+            <summary>
+            Gets the EventId to log with handling errors.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.PipelineEventConstants.PostProcessingError">
+            <summary>
+            Gets the EventId to log with post-processing errors.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.TypeExtensionMethods">
+            <summary>
+            Extensions on <see cref="T:System.Type"/>
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.TypeExtensionMethods.TypeNameCache">
+            <summary>
+            A cache of mapped types to their human readable name
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.Logging.TypeExtensionMethods.GetName(System.Type)">
+            <summary>
+            Gets the name for a type resolving the generics correctly
+            </summary>
+            <param name="type">The type to resolve to a name</param>
+            <returns>The name of the type</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.PipelineRegistry">
+            <summary>
+            The StructureMap registry that stitches together the main pieces of the Inventory Management Service request pipelines.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.PipelineRegistry.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Pipelines.PipelineRegistry"/> class.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Pipelines.RegistryExtensions">
+            <summary>
+            An extensions class containing helper methods for adding authorizers, validators, pre-processors, and post-processors into the Inventory Management Service pipeline execution.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.RegistryExtensions.AddAuthorizer``2(StructureMap.Registry)">
+            <summary>
+            Adds an <see cref="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Authorization.IRequestAuthorizer`1"/> to the request pipeline.
+            </summary>
+            <remarks>ORDER MATTERS! Add authorizers in the order you want them executed.</remarks>
+            <typeparam name="TRequest">The type of the request to authorize</typeparam>
+            <typeparam name="TAuthorizer">The type of the authorizer</typeparam>
+            <param name="registry">The StructureMap registry being used for dependency injection</param>
+            <returns>A <see cref="T:StructureMap.Pipeline.SmartInstance`2"/> that can be used to further specify injection behavior</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.RegistryExtensions.AddValidator``2(StructureMap.Registry)">
+            <summary>
+            Adds an <see cref="T:CoxAuto.Vince.InventoryManagementService.Pipelines.Behaviors.Validation.IRequestValidator`1"/> to the request pipeline.
+            </summary>
+            <remarks>ORDER MATTERS! Add validators in the order you want them executed.</remarks>
+            <typeparam name="TRequest">The type of the request to validate</typeparam>
+            <typeparam name="TValidator">The type of the validator</typeparam>
+            <param name="registry">The StructureMap registry being used for dependency injection</param>
+            <returns>A <see cref="T:StructureMap.Pipeline.SmartInstance`2"/> that can be used to further specify injection behavior</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.RegistryExtensions.AddPreProcessor``2(StructureMap.Registry)">
+            <summary>
+            Adds an <see cref="T:MediatR.Pipeline.IRequestPreProcessor`1"/> to the request pipeline.
+            </summary>
+            <remarks>ORDER MATTERS! Add pre-processors in the order you want them executed.</remarks>
+            <typeparam name="TRequest">The type of the request to preprocess</typeparam>
+            <typeparam name="TPreProcessor">The type of the pre-processor</typeparam>
+            <param name="registry">The StructureMap registry being used for dependency injection</param>
+            <returns>A <see cref="T:StructureMap.Pipeline.SmartInstance`2"/> that can be used to further specify injection behavior</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Pipelines.RegistryExtensions.AddPostProcessor``3(StructureMap.Registry)">
+            <summary>
+            Adds an <see cref="T:MediatR.Pipeline.IRequestPostProcessor`2"/> to the request pipeline.
+            </summary>
+            <typeparam name="TRequest">The type of the request to postprocess</typeparam>
+            <typeparam name="TResponse">The type of the expected response</typeparam>
+            <typeparam name="TPostProcessor">The type of the post-processor</typeparam>
+            <param name="registry">The StructureMap registry being used for dependency injection</param>
+            <returns>A <see cref="T:StructureMap.Pipeline.SmartInstance`2"/> that can be used to further specify injection behavior</returns>
+        </member>
+    </members>
+</doc>

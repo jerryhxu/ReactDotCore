@@ -1,0 +1,305 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoxAuto.Vince.InventoryManagementService.OrgModel</name>
+    </assembly>
+    <members>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.OrgModel.Constants.OrgModelAttributes">
+            <summary>
+            Constants for Org Model attributes related to the CARVIM namespace.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.OrgModel.Constants.OrgModelAttributes.CarvimNamespace">
+            <summary>
+            The namespace for CARVIM related attributes.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.OrgModel.Constants.OrgModelAttributes.OwnershipInventoryView">
+            <summary>
+            The attribute name for attribute containing the ownership inventory view identifier.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.OrgModel.Constants.OrgModelAttributes.CustomInventoryViews">
+            <summary>
+            The attribute name for the attribute containing the custom inventory view identifiers.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.OrgModel.Constants.OrgModelAttributes.AllAttributeNames">
+            <summary>
+            Gets the collection of all attribute names relevant to the Inventory Management Service.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.OrgModel.Models.EntityModel">
+            <summary>
+            A DTO representing an Entity resource in the Org Model API.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.OrgModel.Models.EntityModel.Id">
+            <summary>
+            Gets or sets the identifier of the entity.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.OrgModel.Models.EntityModel.TenantId">
+            <summary>
+            Gets or sets an identifier for the Tenant that owns the entity.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.OrgModel.Models.EntityModel.Name">
+            <summary>
+            Gets or sets the name of the entity.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.OrgModel.Models.EntityModel.OwnershipInventoryViewId">
+            <summary>
+            Gets or sets the ownership inventory view identifier of the entity.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.OrgModel.Models.EntityModel.CustomInventoryViewIds">
+            <summary>
+            Gets or sets the collection of custom inventory view identifiers of the entity.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.OrgModel.Models.EntityModelExtensions">
+            <summary>
+            An extension methods class for helper methods for working with <see cref="T:CoxAuto.Vince.InventoryManagementService.OrgModel.Models.EntityModel"/>s.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Models.EntityModelExtensions.HasOwnershipViewId(CoxAuto.Vince.InventoryManagementService.OrgModel.Models.EntityModel,System.String)">
+            <summary>
+            Checks to see if the specified entity has the specified ownership inventory view.
+            </summary>
+            <param name="entity">The target entity</param>
+            <param name="ownershipViewId">The target ownership inventory view id</param>
+            <returns>A boolean indicating whether the specified ownership inventory view is assigned to the specified entity</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Models.EntityModelExtensions.HasCustomViewId(CoxAuto.Vince.InventoryManagementService.OrgModel.Models.EntityModel,System.String)">
+            <summary>
+            Checks to see if the specified entity has the specified custom inventory view.
+            </summary>
+            <param name="entity">The target entity</param>
+            <param name="customViewId">The target custom inventory view id</param>
+            <returns>A boolean indicating whether the specified custom inventory view is assigned to the specified entity</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Models.EntityModelExtensions.HasViewId(CoxAuto.Vince.InventoryManagementService.OrgModel.Models.EntityModel,System.String)">
+            <summary>
+            Checks to see if the specified entity has the specified inventory view.
+            </summary>
+            <param name="entity">The target entity</param>
+            <param name="viewId">The target inventory view id</param>
+            <returns>A boolean indicating whether the specified inventory view is assigned to the specified entity</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.OrgModel.OrgModelAutoMapperProfile">
+            <summary>
+            An AutoMapper profile for mapping models related to OrgModel services.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.OrgModelAutoMapperProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.OrgModel.OrgModelAutoMapperProfile"/> class.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.OrgModelAutoMapperProfile.CreateMapper">
+            <summary>
+            Creates a AutoMapper instance with the mappings configured in the <see cref="T:CoxAuto.Vince.InventoryManagementService.OrgModel.OrgModelAutoMapperProfile"/>.
+            </summary>
+            <returns>A configured AutoMapper instance</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.OrgModelClientRetryPolicy.#ctor(Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.OrgModel.OrgModelClientRetryPolicy})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.OrgModel.OrgModelClientRetryPolicy"/> class.
+            </summary>
+            <param name="logger">A logger instance.</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.OrgModel.OrgModelClientRetryPolicy.Policy">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.OrgModelClientRetryPolicy.OnHalfOpen">
+            <summary>
+            Logs when the circuit breaker is half-open and testing if it should stay open (broken) or closed (resume operation).
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.OrgModelClientRetryPolicy.OnReset(Polly.Context)">
+            <summary>
+            Logs when the circuit breaker is closed (resumed operation).
+            </summary>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.OrgModelClientRetryPolicy.OnBreak(System.Exception,Polly.CircuitBreaker.CircuitState,System.TimeSpan,Polly.Context)">
+            <summary>
+            Logs when the circuit breaker is opened (broken)
+            </summary>
+            <param name="exception">The last exemption thrown</param>
+            <param name="circuitState">The current state of the circuit</param>
+            <param name="timeSpan">The elapsed time for the request</param>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.OrgModelClientRetryPolicy.OnRetry(System.Exception,System.TimeSpan,System.Int32,Polly.Context)">
+            <summary>
+            Logs when a request fails and is retried
+            </summary>
+            <param name="exception">The last exemption thrown</param>
+            <param name="timeSpan">The elapsed time for the request</param>
+            <param name="count">The current retry count (1 indexed)</param>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.IOrgModelEntityService">
+            <summary>
+            The service interface for working with Core Domain Org Model Entities.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.IOrgModelEntityService.GetEntityAsync(System.String)">
+            <summary>
+            Retrieves the specified entity from the Org Model API.
+            </summary>
+            <remarks>Retrieves all Inventory Management Service relevant attributes with the Entity.</remarks>
+            <param name="entityId">The id of the target entity</param>
+            <returns>A task containing a response from the Org Model API</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.IOrgModelEntityService.GetEntitiesByTenantIdAsync(System.String)">
+            <summary>
+            Retrieves all entities from the supplied tenant .
+            </summary>
+            <param name="tenantId">The id of the target tenant</param>
+            <returns>A task containing a response from the Org Model API</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.IOrgModelEntityService.AttachOwnershipViewIdToEntityAsync(System.String,System.String)">
+            <summary>
+            Attaches the specified ownership view id to the specified entity in the Org Model API.
+            </summary>
+            <param name="entityId">The id of the target entity</param>
+            <param name="ownershipViewId">The id of the target ownership inventory view</param>
+            <returns>A task containing a response from the Org Model API</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.IOrgModelEntityService.AttachCustomViewIdToEntityAsync(System.String,System.String)">
+            <summary>
+            Attaches the specified custom view id to the specified entity in the Org Model API.
+            </summary>
+            <param name="entityId">The id of the target entity</param>
+            <param name="customViewId">The id of the target custom inventory view</param>
+            <returns>A task containing a response from the Org Model API</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.IOrgModelEntityService.RemoveOwnershipViewIdFromEntityAsync(System.String,System.String)">
+            <summary>
+            Removes the specified ownership view id from the specified entity in the Org Model API.
+            </summary>
+            <param name="entityId">The id of the target entity</param>
+            <param name="ownershipViewId">The id of the target ownership inventory view</param>
+            <returns>A task containing a response from the Org Model API</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.IOrgModelEntityService.RemoveCustomViewIdFromEntityAsync(System.String,System.String)">
+            <summary>
+            Removes the specified custom view id from the specified entity in the Org Model API.
+            </summary>
+            <param name="entityId">The id of the target entity</param>
+            <param name="customViewId">The id of the target custom inventory view</param>
+            <returns>A task containing a response from the Org Model API</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.MockOrgModelEntityService">
+            <summary>
+            The service for working with Core Domain Org Model Entities.
+            </summary>
+            <remarks>
+            All attribute names will be prefixed with the provided attribute name prefix.
+            </remarks>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.MockOrgModelEntityService._attrNamePrefix">
+            <summary>
+            A prefix to be applied to all entity attribute names.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.MockOrgModelEntityService._logger">
+            <summary>
+            A logger instance.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.MockOrgModelEntityService.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.OrgModel.Services.MockOrgModelEntityService})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.MockOrgModelEntityService"/> class.
+            </summary>
+            <param name="attrNamePrefix">The prefix to append to all entity attribute names</param>
+            <param name="orgModelClient">The client to the Org Model API</param>
+            <param name="retryPolicy">The retry policy to use for requests</param>
+            <param name="logger">A logger instance</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.MockOrgModelEntityService.GetEntityAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.MockOrgModelEntityService.GetEntitiesByTenantIdAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.MockOrgModelEntityService.AttachOwnershipViewIdToEntityAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.MockOrgModelEntityService.AttachCustomViewIdToEntityAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.MockOrgModelEntityService.RemoveOwnershipViewIdFromEntityAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.MockOrgModelEntityService.RemoveCustomViewIdFromEntityAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.OrgModelEntityService">
+            <summary>
+            The service for working with Core Domain Org Model Entities.
+            </summary>
+            <remarks>
+            All attribute names will be prefixed with the provided attribute name prefix.
+            </remarks>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.OrgModelEntityService._attrNamePrefix">
+            <summary>
+            A prefix to be applied to all entity attribute names.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.OrgModelEntityService._orgModelClient">
+            <summary>
+            A client for communicating with the Org Model API.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.OrgModelEntityService._mapper">
+            <summary>
+            An AutoMapper instance.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.OrgModelEntityService._logger">
+            <summary>
+            A logger instance.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.OrgModelEntityService.#ctor(System.String,CoxAuto.CoreDomain.OrgModelClient.ICdomOrgModelClient,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.OrgModel.Services.OrgModelEntityService})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.OrgModelEntityService"/> class.
+            </summary>
+            <param name="attrNamePrefix">The prefix to append to all entity attribute names</param>
+            <param name="orgModelClient">The client to the Org Model API</param>
+            <param name="retryPolicy">The retry policy to use for requests</param>
+            <param name="logger">A logger instance</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.OrgModelEntityService.GetEntityAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.OrgModelEntityService.GetEntitiesByTenantIdAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.OrgModelEntityService.AttachOwnershipViewIdToEntityAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.OrgModelEntityService.AttachCustomViewIdToEntityAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.OrgModelEntityService.RemoveOwnershipViewIdFromEntityAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.OrgModelEntityService.RemoveCustomViewIdFromEntityAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.OrgModel.Services.OrgModelEntityService.PrependAttributeName(System.String)">
+            <summary>
+            Constructs an attribute name with the proper attribute name prefix.
+            </summary>
+            <param name="attributeName">The name of the attribute</param>
+            <returns>A prepended attribute name</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,348 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoxAuto.Vince.InventoryManagementService.AccessControl</name>
+    </assembly>
+    <members>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlAction">
+            <summary>
+            Enumerates the Access Control actions used by Inventory Management.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlAction.View">
+            <summary>
+            The 'view' resource action.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlAction.Edit">
+            <summary>
+            The 'edit' resource action.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlAction.Add">
+            <summary>
+            The 'add' resource action.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlAction.Create">
+            <summary>
+            The 'create' resource action.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlAction.Delete">
+            <summary>
+            The 'delete' resource action.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlAction.ViewEncryptedFields">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlAction.EditEncryptedFields">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlAction.Request">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlActionExtensions">
+            <summary>
+            An extensions class for working with AccessControlActions.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlActionExtensions.EnumLookupMap">
+            <summary>
+            A lazily cached lookup map of AccessControlAction enums to Action strings.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlActionExtensions.StringLookupMap">
+            <summary>
+            A lazily cached lookup map of Action strings to AccessControlAction enums.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlActionExtensions.AllActions">
+            <summary>
+            Gets all supported AccessControlAction enum values.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlActionExtensions.AllActionStrings">
+            <summary>
+            Gets all supported Action string values.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlActionExtensions.ToActions(System.String[])">
+            <summary>
+            Converts a collection of Action string values to a collection of AccessControlAction enums.
+            </summary>
+            <remarks>Ignores any string values that do not have a corresponding AccessControlAction enum value.</remarks>
+            <param name="actions">The action strings to convert</param>
+            <returns>A collection of AccessControlAction enums</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlActionExtensions.ToActionStrings(CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlAction[])">
+            <summary>
+            Converts a collection of AccessControlAction enums to a collection of Action strings.
+            </summary>
+            <remarks>Ignores any enum values that do not have a corresponding Action string value.</remarks>
+            <param name="actions">The AccessControlAction enums to convert</param>
+            <returns>A collection of Action strings</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlPermission">
+            <summary>
+            A permission that specifies the allowed <see cref="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlAction"/>s on a specific <see cref="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResource"/>.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlPermission.#ctor(CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResource,CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlAction[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlPermission"/> class.
+            </summary>
+            <param name="resource">The resource the permission applies to</param>
+            <param name="allowedActions">The allowed actions on the specified resource</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlPermission.Resource">
+            <summary>
+            Gets the resource to which this permission applies to.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlPermission.AllowedActions">
+            <summary>
+            Gets the collection of allowed on the resource this permission applies to.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResource">
+            <summary>
+            Enumerates the Access Control resources used by Inventory Management.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResource.Inventory">
+            <summary>
+            The 'inventory' resource.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResource.InventoryView">
+            <summary>
+            The 'inventory-view' resource.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResource.InventoryTransfer">
+            <summary>
+            The 'inventory-transfer' resource.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResource.Pricing">
+            <summary>
+            The 'pricing' resource.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResource.PricingCost">
+            <summary>
+            The 'pricing-cost' resource.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResource.Vehicle">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResourceExtensions">
+            <summary>
+            An extensions class for working with AccessControlResources.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResourceExtensions.EnumLookupMap">
+            <summary>
+            A lazily cached lookup map of AccessControlResource enums to ResourceCRN strings.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResourceExtensions.StringLookupMap">
+            <summary>
+            A lazily cached lookup map of ResourceCRN strings to AccessControlResource enums.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResourceExtensions.AllResources">
+            <summary>
+            Gets all supported AccessControlResource enum values.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResourceExtensions.AllResourceCrns">
+            <summary>
+            Gets all supported ResourceCRN string values.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResourceExtensions.ToResources(System.String[])">
+            <summary>
+            Converts a collection of ResourceCRN strings to a collection of AccessControlResource enums.
+            </summary>
+            <remarks>Ignores any string values that do not have a corresponding AccessControlResource enum value.</remarks>
+            <param name="resourceCrns">The resourceCrns to convert</param>
+            <returns>A collection of AccessControlResource enums</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResourceExtensions.ToResourceCrns(CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResource[])">
+            <summary>
+            Converts a collection of AccessControlResource enums to a collection of ResourceCRN strings.
+            </summary>
+            <remarks>Ignores any enum values that do not have a corresponding ResourceCRN value.</remarks>
+            <param name="resources">The AccessControlResource enums to convert</param>
+            <returns>A collection of ResourceCRN strings</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResult`1">
+            <summary>
+            A result dto that indicates the output of an Access Control related operation.
+            </summary>
+            <typeparam name="TData">The type of the data returned by the executed operation</typeparam>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResult`1.#ctor(CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResultStatus,`0,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResult`1"/> class.
+            </summary>
+            <param name="status">The overall status of the requested operation</param>
+            <param name="data">The data returned from the requested operation</param>
+            <param name="errorMessage">A message describing any errors that occurred during the requested operation, if any</param>
+            <param name="errorException">An exception thrown during the execution of the requested operation, if any</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResult`1.Status">
+            <summary>
+            Gets the result status from executing the requested operation.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResult`1.Data">
+            <summary>
+            Gets the data returned by executing the requested operation.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResult`1.ErrorMessage">
+            <summary>
+            Gets the message describing any errors that occurred while executing the requested operation, if any.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResult`1.ErrorException">
+            <summary>
+            Gets the exception thrown while executing the requested operation, if any.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResult`1.Success(`0)">
+            <summary>
+            Creates a AccessControlResult for a successful operation.
+            </summary>
+            <param name="data">The data returned in the result</param>
+            <returns>A successful AccessControlResult</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResult`1.Error(System.String,System.Exception)">
+            <summary>
+            Creates a AccessControlResult for an unsuccessful operation.
+            </summary>
+            <param name="errorMessage">A message describing the error</param>
+            <param name="exception">An exception that occurred</param>
+            <returns>A successful AccessControlResult</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResultStatus">
+            <summary>
+            Enumerates the statuses that can be returned in an <see cref="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResult`1"/>.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResultStatus.Success">
+            <summary>
+            A status that indicates the requested operation was successful.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResultStatus.Error">
+            <summary>
+            A status that indicates that the requested operation failed due to an error.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlService">
+            <summary>
+            A service for authorizing requests against the Access Control API.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlService._accessControlQueryClient">
+            <summary>
+            The client for making requests to the Access Control API.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlService.#ctor(CoxAuto.CoreDomain.AccessControlClient.Query.IAccessControlQueryClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlService"/> class.
+            </summary>
+            <param name="accessControlQueryClient">A client for the Access Control API</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlService.GetAccessControlPermissionsAsync(System.String,System.String,CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResource[])">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlService.ConvertAccessControlErrorToString(System.Nullable{System.Net.HttpStatusCode},CoxAuto.CoreDomain.AccessControlClient.AccessControlError)">
+            <summary>
+            Converts a <see cref="T:CoxAuto.CoreDomain.AccessControlClient.AccessControlError"/> dto to a string representation that can be logged.
+            </summary>
+            <param name="statusCode">The HTTP Status Code that came back in the web request</param>
+            <param name="error">The AccessControlError that was returned by the client</param>
+            <returns>A string representation of the error</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.AccessControl.Attributes.ResourceActionAttribute">
+            <summary>
+            An attribute that specifies the Access Control designated action string associated with an <see cref="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlAction"/> enum value.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.Attributes.ResourceActionAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.AccessControl.Attributes.ResourceActionAttribute"/> class.
+            </summary>
+            <param name="resourceAction">The Access Control action string</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.AccessControl.Attributes.ResourceActionAttribute.ResourceAction">
+            <summary>
+            Gets the Access Control designated action string value.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.AccessControl.Attributes.ResourceCrnAttribute">
+            <summary>
+            An attribute that specifies the Access Control designated ResourceCRN string associated with an <see cref="T:CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResource"/> enum value.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.Attributes.ResourceCrnAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.AccessControl.Attributes.ResourceCrnAttribute"/> class.
+            </summary>
+            <param name="resourceCrn">The resourceCrn value</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.AccessControl.Attributes.ResourceCrnAttribute.ResourceCrn">
+            <summary>
+            Gets the Access Control designed ResourceCRN string value.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.Extensions.ArgumentCheckExtensions.ThrowArgExceptionIfNullEmptyOrWhitespace(System.String,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentException"/> if the string argument is null, empty or whitespace. Otherwise returns the original string argument value.
+            </summary>
+            <param name="value">The string value to check for null, empty or whitespace</param>
+            <param name="argumentName">The name of the argument</param>
+            <returns>The original string argument value</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.Extensions.ArgumentCheckExtensions.ThrowArgExceptionIfNull``1(``0,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentException"/> if the argument value is null. Otherwise returns the original argument value.
+            </summary>
+            <typeparam name="TValue">The type of the argument value</typeparam>
+            <param name="value">The value to check for null</param>
+            <param name="argumentName">The name of the argument</param>
+            <returns>The original argument value</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.AccessControl.IAccessControlService">
+            <summary>
+            The service interface for retrieving Access Control data relevant to Inventory Management.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.AccessControl.IAccessControlService.GetAccessControlPermissionsAsync(System.String,System.String,CoxAuto.Vince.InventoryManagementService.AccessControl.AccessControlResource[])">
+            <summary>
+            Retrieves the access control granted permissions for the specified principal at the specified entity context for the specified resources.
+            </summary>
+            <param name="principalCrn">The CRN of the user principal to check permissions for</param>
+            <param name="entityId">The CRN of the entity context to check user permissions in</param>
+            <param name="resources">The resources for which to retrieve permissions</param>
+            <returns>A task containing the list of permissions specified by Access Control</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.AccessControl.MockAccessControlService">
+            <summary>
+            A service for mocking authorizing requests against the Access Control API.
+            </summary>
+        </member>
+    </members>
+</doc>

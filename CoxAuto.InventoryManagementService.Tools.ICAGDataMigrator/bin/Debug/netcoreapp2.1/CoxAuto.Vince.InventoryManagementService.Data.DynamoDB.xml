@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoxAuto.Vince.InventoryManagementService.Data.DynamoDB</name>
+    </assembly>
+    <members>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.Configuration.DynamoDBConfiguration">
+            <summary>
+            Configuration for operating with the AWS DynamoDB service.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.Configuration.DynamoDBConfiguration.TableNamePrefix">
+            <summary>
+            Gets or sets the prefix to prepend to all DynamoDB tables operated upon.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDB.DateTimeExtensions">
+            <summary>
+            DateTime Extension Methods
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDB.DateTimeExtensions.ToEpochTime(System.DateTime)">
+            <summary>
+            Gets the current EpochTime
+            </summary>
+            <returns>The current epoch time</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDB.DynamoDbDocumentExtensions">
+            <summary>
+            This class defines some helpful Extensions for serializing and deserializing object from DynamoDB
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDB.DynamoDbDocumentExtensions.ToDocument(System.Object)">
+            <summary>
+            Converts an object to a DynamoDB Document
+            </summary>
+            <param name="obj">The object to be converted</param>
+            <returns>The resulting Document</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDB.DynamoDbDocumentExtensions.ToObject``1(Amazon.DynamoDBv2.DocumentModel.Document)">
+            <summary>
+            Converts a DynamoDB Document to an object of Type T
+            </summary>
+            <typeparam name="T">The Type of object to convert to.</typeparam>
+            <param name="doc">The DynamoDB Document representation of the object.</param>
+            <returns>The deserialized version of the Document as a Type T</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDB.DynamoDbDocumentExtensions.FromJson(System.String)">
+            <summary>
+            Converts a json string to a DynamoDB Record
+            </summary>
+            <param name="json">The json representation of the Record</param>
+            <returns>The deserialized version of the Record</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDB.UniqueConstraintCommitException">
+            <summary>
+            An exception for when commit of a Unique Constraint document fails.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDB.UniqueConstraintCommitException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDB.UniqueConstraintCommitException"/> class.
+            </summary>
+            <param name="message">The descriptive message for the UniqueConstraintCommitException</param>
+            <param name="innerException">The inner exception</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDB.UniqueConstraintCreateException">
+            <summary>
+            An exception for when creation of a Unique Constraint document fails.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDB.UniqueConstraintCreateException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDB.UniqueConstraintCreateException"/> class.
+            </summary>
+            <param name="message">The descriptive message for the CreateUniqueConstraintException</param>
+            <param name="innerException">The inner exception</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDB.UniqueConstraintDeleteException">
+            <summary>
+            An exception for when deletion of a Unique Constraint document fails.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDB.UniqueConstraintDeleteException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDB.UniqueConstraintDeleteException"/> class.
+            </summary>
+            <param name="message">The descriptive message for the UniqueConstraintDeleteException</param>
+            <param name="innerException">The inner exception</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDBClientProvider">
+            <summary>
+            Provider for creating <see cref="T:Amazon.DynamoDBv2.DataModel.DynamoDBContext"/>s.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDBClientProvider._region">
+            <summary>
+            The AWS region to create DynamoDB contexts in.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDBClientProvider.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDBClientProvider"/> class.
+            </summary>
+            <param name="region">The aws region to initialize the DynamoDB context in.</param>
+            <param name="tableNamePrefix">The prefix to prepend on all DynamoDB table names.</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDBClientProvider.TableNamePrefix">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDBClientProvider.GetClient">
+            <inheritdoc />
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDBContextProvider">
+            <summary>
+            Provider for creating <see cref="T:Amazon.DynamoDBv2.DataModel.DynamoDBContext"/>s.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDBContextProvider._region">
+            <summary>
+            The AWS region to create DynamoDB contexts in.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDBContextProvider._tableNamePrefix">
+            <summary>
+            The prefix to append to all table names operated upon.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDBContextProvider.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDBContextProvider"/> class.
+            </summary>
+            <param name="region">The aws region to initialize the DynamoDB context in.</param>
+            <param name="tableNamePrefix">The prefix to prepend on all DynamoDB table names.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.DynamoDBContextProvider.GetContext">
+            <summary>
+            Creates a <see cref="T:Amazon.DynamoDBv2.DataModel.DynamoDBContext"/>.
+            </summary>
+            <returns>A <see cref="T:Amazon.DynamoDBv2.DataModel.DynamoDBContext"/>.</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.IDynamoDBClientProvider">
+            <summary>
+            Provider for creating <see cref="T:Amazon.DynamoDBv2.DataModel.IDynamoDBContext"/>s.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.IDynamoDBClientProvider.TableNamePrefix">
+            <summary>
+            Gets the prefix to append to all table names operated upon.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.IDynamoDBClientProvider.GetClient">
+            <summary>
+            Creates a <see cref="T:Amazon.DynamoDBv2.AmazonDynamoDBClient"/>.
+            </summary>
+            <returns>A <see cref="T:Amazon.DynamoDBv2.AmazonDynamoDBClient"/>.</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.IDynamoDBContextProvider">
+            <summary>
+            Provider for creating <see cref="T:Amazon.DynamoDBv2.DataModel.IDynamoDBContext"/>s.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.IDynamoDBContextProvider.GetContext">
+            <summary>
+            Creates a <see cref="T:Amazon.DynamoDBv2.DataModel.IDynamoDBContext"/>.
+            </summary>
+            <returns>A <see cref="T:Amazon.DynamoDBv2.DataModel.IDynamoDBContext"/>.</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.IUniqueDocument">
+            <summary>
+            An interface that defines the shape of unique constraint documents
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.IUniqueDocument.Hash">
+            <summary>
+            Gets or sets the unique hash for the document
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.UniqueConstraintDocument">
+            <inheritdoc/>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.UniqueConstraintDocument.Hash">
+            <inheritdoc/>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.UniqueConstraintDocument.ExpirationTime">
+            <summary>
+            Gets or sets the time that the record will expire
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.UniqueConstraintDocument.CreationTime">
+            <summary>
+            Gets or sets the time that the record was created
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.UniqueConstraintDocument.InventoryId">
+            <summary>
+            Gets or sets the InventoryId associated with the record
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.Exceptions.DynamoDBSetupException">
+            <inheritdoc />
+            <summary>
+            Wraps exceptions in AWS SDK code during client object setup. See inner exception for detail.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.Exceptions.DynamoDBSetupException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.Exceptions.DynamoDBSetupException"/> class.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.Exceptions.DynamoDBSetupException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.Exceptions.DynamoDBSetupException"/> class.
+            </summary>
+            <param name="message">A readable message to attach to the exception</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.Exceptions.DynamoDBSetupException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.Exceptions.DynamoDBSetupException"/> class.
+            </summary>
+            <param name="message">A readable message to attach to the exception</param>
+            <param name="inner">An inner exception to attach to the exception</param>
+        </member>
+    </members>
+</doc>

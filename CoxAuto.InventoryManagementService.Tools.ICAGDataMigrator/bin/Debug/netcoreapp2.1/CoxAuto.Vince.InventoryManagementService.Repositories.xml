@@ -1,0 +1,1798 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoxAuto.Vince.InventoryManagementService.Repositories</name>
+    </assembly>
+    <members>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.BatchRepositoryResponse`1">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.BatchRepositoryResponse`1.#ctor(CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus,System.String,System.Exception,`0[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.BatchRepositoryResponse`1"/> class.
+            </summary>
+            <param name="status">The result status of the request</param>
+            <param name="message">A friendly readable message about any errors that may have occurred</param>
+            <param name="exception">An exception that may have occurred during the request</param>
+            <param name="values">The document values retrieved by the request</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.BatchRepositoryResponse`1.Values">
+            <summary>
+            Gets the document values retrieved by the repository request.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.CustomConfigurationValidator">
+            <summary>
+            A CustomConfigurationValidator object
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.CustomConfigurationValidator._logger">
+            <summary>
+            Gets or sets the Logger used by this session.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.CustomConfigurationValidator._repository">
+            <summary>
+            Gets or sets the DynamoDbUniqueConstraintRepository used by this session.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomConfigurationValidator.#ctor(CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbCustomFieldConfigurationsRepository,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.CustomConfigurationValidator})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.CustomConfigurationValidator"/> class.
+            </summary>
+            <param name="repository">Custom Field Configurations Repository</param>
+            <param name="logger">Logger</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomConfigurationValidator.GetUnconfiguredFields(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Checks if the fields are configured or not
+            </summary>
+            <param name="fieldIdentifiers">The field identifiers to check</param>
+            <param name="entity">The entity</param>
+            <returns>A list of field identifiers that aren't configured</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesProperties">
+            <summary>
+            Represents a set of custom fields and their values.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesProperties.Fields">
+            <summary>
+            Gets or sets a dictionary of custom fields and their values.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesPropertyMapper">
+            <inheritdoc />
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesPropertyMapper._camelCaseSerializer">
+            <summary>
+            A JsonSerializer that camel-cases all property names.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesPropertyMapper.ToCustomFieldProperties``1(``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesPropertyMapper.ToDomainModel``1(CoxAuto.Carvim.CustomFields.CustomFieldsClient.ValuesGetResponse,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1">
+            <inheritdoc />
+            <summary>
+            A repository for CRUDing data into Custom Fields that returns standard success and error responses
+            </summary>
+            <typeparam name="TModel">The IMS type to CRUD via Custom Fields</typeparam>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1._customFieldsValuesClient">
+            <summary>
+            Client to talk to CustomFieldValues API
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1._mapper">
+            <summary>
+            Mapper to map IMS => Custom Fields and Custom Fields => IMS
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1._logger">
+            <summary>
+            A logger for logging what is going on
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1._retryPolicy">
+            <summary>
+            The retry policy used for all requests to VehicleSORus
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1.#ctor(CoxAuto.Carvim.CustomFields.CustomFieldsClient.IValuesClient,CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.IAmACustomFieldValuesPropertyMapper,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository{`0}},CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.ICustomFieldValuesRetryPolicy)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1"/> class.
+            </summary>
+            <param name="customFieldsValuesClient">API to talk to Custom Fields</param>
+            <param name="mapper">Mapper to map IMS => Custom Fields and Custom Fields => IMS</param>
+            <param name="logger">A logger for logging what is going on</param>
+            <param name="retryPolicy">A retry policy for custom fields</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1.CreateAsync(`0,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1.RetrieveAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1.RetrieveByOwnershipViewIdentifierAsync(System.String)">
+            <summary>
+            Not Implemented by Custom Field Values Repository
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1.RetrieveManyAsync(System.String[],CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext)">
+            <summary>
+            Not Implemented by Custom Field Values Repository
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1.RetrieveVersionAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1.ReplaceAsync(System.String,`0,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1.DeleteAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1.RetrieveVersionsAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1.GetResponseStatusFromCustomFieldValuesReturnCode(System.Int32)">
+            <summary>
+            Maps return codes from Custom Fields to IMS responses
+            </summary>
+            <param name="statusCode">The code from Custom Fields</param>
+            <returns>A IMS repository response</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1.LogSuccess(System.String,System.String)">
+            <summary>
+            Logs when a success occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1.LogError(System.String,CoxAuto.Carvim.CustomFields.CustomFieldsClient.CustomFieldsClientException,System.String)">
+            <summary>
+            Logs when a error occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="exception">The exception returned from Custom Fields</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRepository`1.LogError(System.String,System.String,System.String)">
+            <summary>
+            Logs when a error occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="errorMessage">The error that occurred</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRetryPolicy">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRetryPolicy.#ctor(Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRetryPolicy})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRetryPolicy"/> class.
+            </summary>
+            <param name="logger">A logger instance.</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRetryPolicy.Policy">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRetryPolicy.OnHalfOpen">
+            <summary>
+            Logs when the circuit breaker is half-open and testing if it should stay open (broken) or closed (resume operation).
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRetryPolicy.OnReset(Polly.Context)">
+            <summary>
+            Logs when the circuit breaker is closed (resumed operation).
+            </summary>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRetryPolicy.OnBreak(System.Exception,Polly.CircuitBreaker.CircuitState,System.TimeSpan,Polly.Context)">
+            <summary>
+            Logs when the circuit breaker is opened (broken)
+            </summary>
+            <param name="exception">The last exemption thrown</param>
+            <param name="circuitState">The current state of the circuit</param>
+            <param name="timeSpan">The elapsed time for the request</param>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.CustomFieldValuesRetryPolicy.OnRetry(System.Exception,System.TimeSpan,System.Int32,Polly.Context)">
+            <summary>
+            Logs when a request fails and is retried
+            </summary>
+            <param name="exception">The last exemption thrown</param>
+            <param name="timeSpan">The elapsed time for the request</param>
+            <param name="count">The current retry count (1 indexed)</param>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.IAmACustomFieldValuesPropertyMapper">
+            <summary>
+            A class that maps between domain models and custom fields.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.IAmACustomFieldValuesPropertyMapper.ToCustomFieldProperties``1(``0)">
+            <summary>
+            Maps an Inventory Management Service domain model to a Custom Fields fields dictionary.
+            </summary>
+            <param name="value">The model to map</param>
+            <typeparam name="TModel">The type of the model to be mapped</typeparam>
+            <returns>A Custom Fields property dictionary</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.IAmACustomFieldValuesPropertyMapper.ToDomainModel``1(CoxAuto.Carvim.CustomFields.CustomFieldsClient.ValuesGetResponse,System.String,System.String)">
+            <summary>
+            Maps a Custom Fields client response to an Inventory Management Service domain model.
+            </summary>
+            <param name="responseResponse">The Custom Field response dto to map.</param>
+            <param name="id">The custom field Id</param>
+            <param name="responseVersion">The version of the custom fields document.</param>
+            <typeparam name="TModel">The type of the model to be mapped to and returned.</typeparam>
+            <returns>A hydrated IMS model.</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.ICustomFieldValuesRetryPolicy">
+            <summary>
+            A retry policy for AWS DynamoDB
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.CustomFieldValues.ICustomFieldValuesRetryPolicy.Policy">
+            <summary>
+            Gets to policy to use for AWS DynamoDB
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.DataOverrides.DataOverridesRetryPolicy">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DataOverrides.DataOverridesRetryPolicy.#ctor(Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.DataOverrides.DataOverridesRetryPolicy})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.DataOverrides.DataOverridesRetryPolicy"/> class.
+            </summary>
+            <param name="logger">A logger instance.</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.DataOverrides.DataOverridesRetryPolicy.Policy">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DataOverrides.DataOverridesRetryPolicy.OnHalfOpen">
+            <summary>
+            Logs when the circuit breaker is half-open and testing if it should stay open (broken) or closed (resume operation).
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DataOverrides.DataOverridesRetryPolicy.OnReset(Polly.Context)">
+            <summary>
+            Logs when the circuit breaker is closed (resumed operation).
+            </summary>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DataOverrides.DataOverridesRetryPolicy.OnBreak(System.Exception,Polly.CircuitBreaker.CircuitState,System.TimeSpan,Polly.Context)">
+            <summary>
+            Logs when the circuit breaker is opened (broken)
+            </summary>
+            <param name="exception">The last exemption thrown</param>
+            <param name="circuitState">The current state of the circuit</param>
+            <param name="timeSpan">The elapsed time for the request</param>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DataOverrides.DataOverridesRetryPolicy.OnRetry(System.Exception,System.TimeSpan,System.Int32,Polly.Context)">
+            <summary>
+            Logs when a request fails and is retried
+            </summary>
+            <param name="exception">The last exemption thrown</param>
+            <param name="timeSpan">The elapsed time for the request</param>
+            <param name="count">The current retry count (1 indexed)</param>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.DataOverrides.IDataOverridesRetryPolicy">
+            <summary>
+            A retry policy for AWS DynamoDB
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.DataOverrides.IDataOverridesRetryPolicy.Policy">
+            <summary>
+            Gets to policy to use for AWS DynamoDB
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AdapterRepository`2">
+            <summary>
+            A repository for adapting an <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IAmADynamoDbRepository`1"/> to the interface of a <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.IAmARepositoryOf`1"/>.
+            </summary>
+            <typeparam name="TModel">The type of the document model to be stored</typeparam>
+            <typeparam name="TDynamo">The type of the DynamoDB document model to be stored</typeparam>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AdapterRepository`2._mapper">
+            <summary>
+            An AutoMapper instance for mapping TModel to TDynamo.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AdapterRepository`2._dynamo">
+            <summary>
+            A DynamoDB repository instance.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AdapterRepository`2.#ctor(AutoMapper.IMapper,CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IAmADynamoDbRepository{`1})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AdapterRepository`2"/> class.
+            </summary>
+            <param name="mapper">An AutoMapper instance</param>
+            <param name="dynamo">A DynamoDB repository instance</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AdapterRepository`2.CreateAsync(`0,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AdapterRepository`2.RetrieveAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AdapterRepository`2.RetrieveManyAsync(System.String[],CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AdapterRepository`2.RetrieveVersionAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AdapterRepository`2.ReplaceAsync(System.String,`0,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AdapterRepository`2.DeleteAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AdapterRepository`2.RetrieveVersionsAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AuditableDynamoDbRepository`1">
+            <summary>
+            A repository for CRUDing data into DynamoDB that returns standard success and error responses
+            and implements an auditing pattern.
+            </summary>
+            <typeparam name="TModel">The IMS type to CRUD via DynamoDB</typeparam>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AuditableDynamoDbRepository`1._versionPointerRepo">
+            <summary>
+            The DynamoDb Client used to access the Table
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AuditableDynamoDbRepository`1._logger">
+            <summary>
+            A logger for logging what is going on
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AuditableDynamoDbRepository`1.#ctor(CARVIM.Platform.Audit.IVersionedRepository{CARVIM.Platform.Audit.VersionPointer},CARVIM.Platform.Audit.IVersionHistoryRepository{`0},Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository{`0}},CARVIM.Platform.Audit.IAuditableRepository{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AuditableDynamoDbRepository`1"/> class.
+            </summary>
+            <param name="versionPointerRepo">The repository for the pointer to the current version</param>
+            <param name="versionHistoryRepo">The repository for the version history</param>
+            <param name="logger">A logger for logging what is going on.</param>
+            <param name="auditRepo">Audit repo</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AuditableDynamoDbRepository`1.CreateAsync(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AuditableDynamoDbRepository`1.RetrieveAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AuditableDynamoDbRepository`1.RetrieveManyAsync(System.String[])">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AuditableDynamoDbRepository`1.RetrieveVersionAsync(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AuditableDynamoDbRepository`1.RetrieveVersionsAsync(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AuditableDynamoDbRepository`1.ReplaceAsync(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AuditableDynamoDbRepository`1.DeleteAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AuditableDynamoDbRepository`1.GetDocumentAsync(System.String,System.String,System.String)">
+            <summary>
+            Retrieves a document from the repository by the given id.
+            </summary>
+            <param name="repositoryAction">The parent repository action that triggered this retrieval</param>
+            <param name="id">The id of the document to retrieve</param>
+            <param name="exceptVersion">The version to not retrieve the document for, if the current document is at that version</param>
+            <returns>A task containing a repository response with the targeted document</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AuditableDynamoDbRepository`1.LogSuccess(System.String,System.String)">
+            <summary>
+            Logs when a success occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.AuditableDynamoDbRepository`1.LogError(System.String,System.Exception,System.String[])">
+            <summary>
+            Logs when a error occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="exception">The exception returned from DynamoDB</param>
+            <param name="resourceIds">The resource Ids used to add context to the log</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDBCustomFieldConfigurationsRepository">
+            <summary>
+            A repository for retrieving custom field configurations from DynamoDB
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDBCustomFieldConfigurationsRepository._configurationsClient">
+            <summary>
+            The Custom Field Configuration client
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDBCustomFieldConfigurationsRepository._logger">
+            <summary>
+            A logger for logging what is going on
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDBCustomFieldConfigurationsRepository.#ctor(CoxAuto.Carvim.CustomFields.CustomFieldsClient.IConfigurationsClient,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDBCustomFieldConfigurationsRepository})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDBCustomFieldConfigurationsRepository"/> class
+            </summary>
+            <param name="configurationsClient">The Custom Field Configuration client</param>
+            <param name="logger">A logger for logging what is going on</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDBCustomFieldConfigurationsRepository.CreateValidator(Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.CustomConfigurationValidator})">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDBCustomFieldConfigurationsRepository.RetrieveConfigurations(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1">
+            <summary>
+            A repository for CRUDing data into DynamoDB that returns standard success and error responses
+            </summary>
+            <typeparam name="TModel">The IMS type to CRUD via DynamoDB</typeparam>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1._client">
+            <summary>
+            The DynamoDb Client used to access the Table
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1._table">
+            <summary>
+            The DynamoDb Table wrapper
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1._logger">
+            <summary>
+            A logger for logging what is going on
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1.#ctor(CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.IDynamoDBClientProvider,CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.ITableWrapper,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository{`0}},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1"/> class.
+            </summary>
+            <param name="clientProvider">The DynamoDB client provider.</param>
+            <param name="tableWrapper">A wrapper object for unit testing.</param>
+            <param name="logger">A logger for logging what is going on.</param>
+            <param name="table">The name of the DynamoDb table to store the documents.</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1.TableName">
+            <summary>
+            Gets the name of the DynamoDb table that this repository maps to.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1.CreateAsync(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1.RetrieveAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1.RetrieveVersionAsync(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1.RetrieveManyAsync(System.String[])">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1.ReplaceAsync(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1.DeleteAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1.RetrieveVersionsAsync(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1.GetDocumentAsync(System.String,System.String,System.String)">
+            <summary>
+            Retrieves a document from the repository by the given id.
+            </summary>
+            <param name="repositoryAction">The parent repository action that triggered this retrieval</param>
+            <param name="id">The id of the document to retrieve</param>
+            <param name="exceptVersion">The version to not retrieve the document for, if the current document is at that version</param>
+            <returns>A task containing a repository response with the targeted document</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1.LogSuccess(System.String,System.String)">
+            <summary>
+            Logs when a success occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbRepository`1.LogError(System.String,System.Exception,System.String)">
+            <summary>
+            Logs when a error occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="exception">The exception returned from DynamoDB</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository">
+            <summary>
+            A repository for CRUDing data into DynamoDB that tracks Unique Constraints
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository._client">
+            <summary>
+            The DynamoDb Client used to access the Table
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository._table">
+            <summary>
+            The DynamoDb Table wrapper
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository._logger">
+            <summary>
+            A logger for logging what is going on
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.#ctor(CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.IDynamoDBClientProvider,CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.ITableWrapper,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository"/> class.
+            </summary>
+            <param name="clientProvider">The DynamoDB client provider.</param>
+            <param name="tableWrapper">A wrapper object for unit testing.</param>
+            <param name="logger">A logger for logging what is going on.</param>
+            <param name="table">The name of the DynamoDb table to store the documents.</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.TableName">
+            <summary>
+            Gets the name of the DynamoDb table that this repository maps to.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.CreateSession(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.CreateSession(System.Collections.Generic.List{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.CreateAsync(CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.UniqueConstraintDocument)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.CreateAsync(System.Collections.Generic.List{CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.UniqueConstraintDocument})">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.CommitAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.CommitAsync(System.Collections.Generic.List{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.UpdateInventoryIdAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.UpdateInventoryIdAsync(System.Collections.Generic.List{System.String},System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.DeleteAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.DeleteAsync(System.Collections.Generic.List{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.RetrieveAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.RetrieveAsync(System.Collections.Generic.List{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.LogSuccess(System.String,System.String)">
+            <summary>
+            Logs when a success occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository.LogError(System.String,System.Exception,System.String)">
+            <summary>
+            Logs when a error occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="exception">The exception returned from DynamoDB</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoRetryPolicy">
+            <summary>
+            The Dynamo Retry Policy using logging
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoRetryPolicy._logger">
+            <summary>
+            The logger used to log any retries / circuit breaker changes
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoRetryPolicy.#ctor(Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoRetryPolicy})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoRetryPolicy"/> class.
+            </summary>
+            <param name="logger">The logger used to log any retries / circuit breaker changes</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoRetryPolicy.Policy">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoRetryPolicy.OnHalfOpen">
+            <summary>
+            Logs when the circuit breaker is half-open and testing if it should stay open (broken) or closed (resume operation).
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoRetryPolicy.OnReset(Polly.Context)">
+            <summary>
+            Logs when the circuit breaker is closed (resumed operation).
+            </summary>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoRetryPolicy.OnBreak(System.Exception,Polly.CircuitBreaker.CircuitState,System.TimeSpan,Polly.Context)">
+            <summary>
+            Logs when the circuit breaker is opened (broken)
+            </summary>
+            <param name="exception">The last exemption thrown</param>
+            <param name="circuitState">The current state of the circuit</param>
+            <param name="timeSpan">The elapsed time for the request</param>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoRetryPolicy.OnRetry(System.Exception,System.TimeSpan,System.Int32,Polly.Context)">
+            <summary>
+            Logs when a request fails and is retried
+            </summary>
+            <param name="exception">The last exemption thrown</param>
+            <param name="timeSpan">The elapsed time for the request</param>
+            <param name="count">The current retry count (1 indexed)</param>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IAmADynamoDbRepository`1">
+            <summary>
+            The interface for a DynamoDB document repository.
+            </summary>
+            <typeparam name="TModel">The type of the document being stored in the repository</typeparam>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IAmADynamoDbRepository`1.CreateAsync(`0)">
+            <summary>
+            Creates a new object in the repository
+            </summary>
+            <param name="value">The values used to create a item in the repo</param>
+            <returns>A response to the creation on success or failure</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IAmADynamoDbRepository`1.RetrieveAsync(System.String,System.String)">
+            <summary>
+            Gets an object from the repository
+            </summary>
+            <param name="id">The Id used pick which item is retrieved</param>
+            <param name="exceptVersion">If specified, this version will be matched against the value's version in the repo. If it matches the data will not be returned.</param>
+            <returns>A response to the request on success, failure, or match of the except version</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IAmADynamoDbRepository`1.RetrieveVersionAsync(System.String,System.String)">
+            <summary>
+            Gets a specific version from the repository
+            </summary>
+            <param name="id">The Id used pick which item is retrieved</param>
+            <param name="version">The version to retreive</param>
+            <returns>A response to the request on success or failure</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IAmADynamoDbRepository`1.RetrieveVersionsAsync(System.String)">
+            <summary>
+            Gets all versions from the repository
+            </summary>
+            <param name="id">The Id used pick which item is retrieved</param>
+            <returns>A response to the request on success or failure</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IAmADynamoDbRepository`1.RetrieveManyAsync(System.String[])">
+            <summary>
+            Gets an object from the repository
+            </summary>
+            <param name="ids">The Ids for all items desired</param>
+            <returns>A response to the request on any success, or failure of the entire batch</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IAmADynamoDbRepository`1.ReplaceAsync(`0)">
+            <summary>
+            Replaces the object in the repository with the matching identifier
+            </summary>
+            <param name="value">The value to put in the repo</param>
+            <returns>A response to the request on success, failure</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IAmADynamoDbRepository`1.DeleteAsync(System.String,System.String)">
+            <summary>
+            Removes the object from the repository
+            </summary>
+            <param name="id">The id of the object to delete</param>
+            <param name="version">An optional CAS value.  If this value does not match the version in the repo then an error is returned and no data is deleted</param>
+            <returns>A response to the request on success, failure.  If the Id does not exist, an error response is returned</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbCustomFieldConfigurationsRepository">
+            <summary>
+            IDynamoDbCustomFieldConfigurationsRepository
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbCustomFieldConfigurationsRepository.CreateValidator(Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.CustomConfigurationValidator})">
+            <summary>
+            Creates a CustomConfigurationValidator
+            </summary>
+            <param name="logger">The logger</param>
+            <returns>CustomConfigurationValidator</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbCustomFieldConfigurationsRepository.RetrieveConfigurations(System.String)">
+            <summary>
+            Retrieves configurations for the given entity
+            </summary>
+            <param name="entity">The entity</param>
+            <returns>A collection of configuration responses</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbUniqueConstraintRepository">
+            <summary>
+            IDynamoDbUniqueConstraintRepository
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbUniqueConstraintRepository.CreateAsync(CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.UniqueConstraintDocument)">
+            <summary>
+            Creates a new object in the repository
+            </summary>
+            <param name="document">The values used to create a item in the repo</param>
+            <returns>A response to the creation on success or failure</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbUniqueConstraintRepository.CreateAsync(System.Collections.Generic.List{CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.UniqueConstraintDocument})">
+            <summary>
+            Creates multiple new objects in the repository
+            </summary>
+            <param name="documents">The values used to create a item in the repo</param>
+            <returns>A response to the creation on success or failure</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbUniqueConstraintRepository.UpdateInventoryIdAsync(System.String,System.String)">
+            <summary>
+            Updates an existing object in the repository with an InventoryId
+            </summary>
+            <param name="hash">The hash of the uniqueness record to update</param>
+            <param name="inventoryId">The inventoryId to set on the uniqueness record.</param>
+            <returns>A response to the creation on success or failure</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbUniqueConstraintRepository.UpdateInventoryIdAsync(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Updates an existing objects in the repository with an InventoryId
+            </summary>
+            <param name="hashes">The hashes of the uniqueness records to update</param>
+            <param name="inventoryId">The inventoryId to set on the uniqueness records.</param>
+            <returns>A response to the creation on success or failure</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbUniqueConstraintRepository.CommitAsync(System.String)">
+            <summary>
+            Removed the ttl from a temporary Uniqueness record.
+            </summary>
+            <param name="hash">The hash used to track the unique constraint record</param>
+            <returns>A response to the request on success, failure</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbUniqueConstraintRepository.CommitAsync(System.Collections.Generic.List{System.String})">
+            <summary>
+            Removed the ttl from multiple temporary Uniqueness records.
+            </summary>
+            <param name="hashes">The hashes used to track the unique constraint records</param>
+            <returns>A response to the request on success, failure</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbUniqueConstraintRepository.DeleteAsync(System.String)">
+            <summary>
+            Removes the object from the repository
+            </summary>
+            <param name="hash">The id of the object to delete</param>
+            <returns>A response to the request on success, failure.  If the Id does not exist, an error response is returned</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbUniqueConstraintRepository.DeleteAsync(System.Collections.Generic.List{System.String})">
+            <summary>
+            Removes multiple objects from the repository
+            </summary>
+            <param name="hashes">The id of the object to delete</param>
+            <returns>A response to the request on success, failure.  If the Id does not exist, an error response is returned</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbUniqueConstraintRepository.RetrieveAsync(System.String)">
+            <summary>
+            Retrieves the object from the repository
+            </summary>
+            <param name="hash">The id of the object to retrieve</param>
+            <returns>A response to the request on success, failure.  If the Id does not exist, an error response is returned</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbUniqueConstraintRepository.RetrieveAsync(System.Collections.Generic.List{System.String})">
+            <summary>
+            Retrieves multiple objects from the repository
+            </summary>
+            <param name="hashes">The ids of the objects to retrieve</param>
+            <returns>A response to the request on success, failure.  If the Id does not exist, an error response is returned</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbUniqueConstraintRepository.CreateSession(System.String)">
+            <summary>
+            Creates a UniqueConstraintRepositorySession
+            </summary>
+            <param name="hashes">The hash</param>
+            <returns>a UniqueConstraintRepositorySession</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbUniqueConstraintRepository.CreateSession(System.Collections.Generic.List{System.String})">
+            <summary>
+            Creates a UniqueConstraintRepositorySession
+            </summary>
+            <param name="hashes">The hashes</param>
+            <returns>a UniqueConstraintRepositorySession</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoRetryPolicy">
+            <summary>
+            A retry policy for AWS DynamoDB
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoRetryPolicy.Policy">
+            <summary>
+            Gets to policy to use for AWS DynamoDB
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.ITableWrapper">
+            <summary>
+            An adapter for interacting with DynamoDB Table objects.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.ITableWrapper.LoadTable(Amazon.DynamoDBv2.AmazonDynamoDBClient,System.String)">
+            <summary>
+            Creates a Table object with the specified name, using the passed-in client to
+            load the table definition. The returned table will use the conversion specified
+            by AWSConfigs.DynamoDBConfig.ConversionSchema This method will throw an exception
+            if the table does not exist.
+            </summary>
+            <param name="client">Client to use to access DynamoDB.</param>
+            <param name="tableName">Name of the table.</param>
+            <returns>Table object representing the specified table.</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.ITableWrapper.PutItemAsync(Amazon.DynamoDBv2.DocumentModel.Document,Amazon.DynamoDBv2.DocumentModel.PutItemOperationConfig,System.Threading.CancellationToken)">
+            <summary>
+            Initiates the asynchronous execution of the PutItem operation. Amazon.DynamoDBv2.DocumentModel.Table.PutItem
+            </summary>
+            <param name="doc">Document to save.</param>
+            <param name="config">Configuration to use.</param>
+            <param name="cancellationToken">Token which can be used to cancel the task.</param>
+            <returns>A Task that can be used to poll or wait for results, or both.</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.ITableWrapper.UpdateItemAsync(Amazon.DynamoDBv2.DocumentModel.Document,Amazon.DynamoDBv2.DocumentModel.UpdateItemOperationConfig,System.Threading.CancellationToken)">
+            <summary>
+            Initiates the asynchronous execution of the UpdateItem operation. Amazon.DynamoDBv2.DocumentModel.Table.UpdateItem
+            </summary>
+            <param name="doc">Attributes to update.</param>
+            <param name="config">Configuration to use.</param>
+            <param name="cancellationToken">Token which can be used to cancel the task.</param>
+            <returns>A Task that can be used to poll or wait for results, or both.</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.ITableWrapper.GetItemAsync(System.Collections.Generic.IDictionary{System.String,Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry},Amazon.DynamoDBv2.DocumentModel.GetItemOperationConfig,System.Threading.CancellationToken)">
+            <summary>
+            Initiates the asynchronous execution of the GetItem operation. Amazon.DynamoDBv2.DocumentModel.Table.GetItem
+            </summary>
+            <param name="key">Key of the document.</param>
+            <param name="config">Configuration to use.</param>
+            <param name="cancellationToken">Token which can be used to cancel the task.</param>
+            <returns>A Task that can be used to poll or wait for results, or both.</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.ITableWrapper.DocumentBatchGetAsync(System.Collections.Generic.IList{System.Collections.Generic.IDictionary{System.String,Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry}},System.Boolean,System.Collections.Generic.List{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Initiates the asynchronous execution of the Execute operation. Amazon.DynamoDBv2.DocumentModel.DocumentBatchGet.Execute
+            </summary>
+            <param name="keys">List of items to get, identified by their key.</param>
+            <param name="consistentRead">If set to true, a consistent read is issued. Otherwise eventually-consistent is used.</param>
+            <param name="attributes">List of attributes to retrieve.</param>
+            <param name="cancellationToken">Token which can be used to cancel the task.</param>
+            <returns>List of results retrieved from DynamoDB.</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.ITableWrapper.DocumentScanByKeyAsync(System.Collections.Generic.IDictionary{System.String,Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry},System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Initiates the asynchronous execution of the Execute operation. Amazon.DynamoDBv2.DocumentModel.DocumentBatchGet.Execute
+            </summary>
+            <param name="keys">keys to filter by</param>
+            <param name="consistentRead">If set to true, a consistent read is issued. Otherwise eventually-consistent is used.</param>
+            <param name="cancellationToken">Token which can be used to cancel the task.</param>
+            <returns>List of results retrieved from DynamoDB.</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.ITableWrapper.DocumentQueryByKeyAsync(System.String,System.Collections.Generic.IDictionary{System.String,Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry},System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Queries the table using particular key values.
+            </summary>
+            <param name="indexName">The index to filter</param>
+            <param name="keys">keys to filter by</param>
+            <param name="consistentRead">If set to true, a consistent read is issued. Otherwise eventually-consistent is used.</param>
+            <param name="cancellationToken">Token which can be used to cancel the task.</param>
+            <returns>List of results retrieved from DynamoDB.</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.ITableWrapper.DeleteItemAsync(System.Collections.Generic.IDictionary{System.String,Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry},Amazon.DynamoDBv2.DocumentModel.DeleteItemOperationConfig,System.Threading.CancellationToken)">
+            <summary>
+            Initiates the asynchronous execution of the DeleteItem operation. Amazon.DynamoDBv2.DocumentModel.Table.DeleteItem
+            </summary>
+            <param name="key">Key of the document.</param>
+            <param name="config">Configuration to use.</param>
+            <param name="cancellationToken">Token which can be used to cancel the task.</param>
+            <returns>A Task that can be used to poll or wait for results, or both.</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.TableWrapper">
+            <summary>
+            Wraps the Amazon DynamoDB Table class for ease of testing.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.TableWrapper.#ctor(CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoRetryPolicy)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.TableWrapper"/> class.
+            </summary>
+            <param name="dynamoRetryPolicy">A retry policy for AWS DynamoDB.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.TableWrapper.LoadTable(Amazon.DynamoDBv2.AmazonDynamoDBClient,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.TableWrapper.PutItemAsync(Amazon.DynamoDBv2.DocumentModel.Document,Amazon.DynamoDBv2.DocumentModel.PutItemOperationConfig,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.TableWrapper.UpdateItemAsync(Amazon.DynamoDBv2.DocumentModel.Document,Amazon.DynamoDBv2.DocumentModel.UpdateItemOperationConfig,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.TableWrapper.GetItemAsync(System.Collections.Generic.IDictionary{System.String,Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry},Amazon.DynamoDBv2.DocumentModel.GetItemOperationConfig,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.TableWrapper.DocumentBatchGetAsync(System.Collections.Generic.IList{System.Collections.Generic.IDictionary{System.String,Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry}},System.Boolean,System.Collections.Generic.List{System.String},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.TableWrapper.DocumentScanByKeyAsync(System.Collections.Generic.IDictionary{System.String,Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry},System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.TableWrapper.DocumentQueryByKeyAsync(System.String,System.Collections.Generic.IDictionary{System.String,Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry},System.Boolean,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.TableWrapper.DeleteItemAsync(System.Collections.Generic.IDictionary{System.String,Amazon.DynamoDBv2.DocumentModel.DynamoDBEntry},Amazon.DynamoDBv2.DocumentModel.DeleteItemOperationConfig,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.Extensions.RepositoryResponseExtensions">
+            <summary>
+            An extensions class for RepositoryResponse helper methods.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.Extensions.RepositoryResponseExtensions.GetMessages(CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse)">
+            <summary>
+            Array-ifys the <see cref="P:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse.Message"/> property with a built in check for null, empty or whitespace values.
+            </summary>
+            <param name="response">The repository response object</param>
+            <returns>An array of useful message(s) derived from the repository response</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.IAmARepositoryOf`1">
+            <summary>
+            The contract used for all repositories
+            </summary>
+            <typeparam name="TModel">The input/output type</typeparam>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.IAmARepositoryOf`1.CreateAsync(`0,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext)">
+            <summary>
+            Creates a new object in the repository
+            </summary>
+            <param name="value">The values used to create a item in the repo</param>
+            <param name="context">The metadata used to provide context to downstream services</param>
+            <returns>A response to the creation on success or failure</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.IAmARepositoryOf`1.RetrieveAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <summary>
+            Gets an object from the repository
+            </summary>
+            <param name="id">The Id used pick which item is retrieved</param>
+            <param name="context">The metadata used to provide context to downstream services</param>
+            <param name="exceptVersion">If specified, this value will be matched against the value in the repo.
+                If it matches the data will not be returned.  Instead, a different response is returned</param>
+            <returns>A response to the request on success, failure, or match of the except version</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.IAmARepositoryOf`1.RetrieveVersionAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <summary>
+            Gets a specific version from the repository
+            </summary>
+            <param name="id">The Id used pick which item is retrieved</param>
+            <param name="context">The context</param>
+            <param name="version">The version to retreive</param>
+            <returns>A response to the request on success or failure</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.IAmARepositoryOf`1.RetrieveVersionsAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext)">
+            <summary>
+            Gets all versions from the repository
+            </summary>
+            <param name="id">The Id used pick which item is retrieved</param>
+            <param name="context">The context</param>
+            <returns>A response to the request on success or failure</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.IAmARepositoryOf`1.RetrieveManyAsync(System.String[],CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext)">
+            <summary>
+            Gets an object from the repository
+            </summary>
+            <param name="ids">The Ids for all items desired</param>
+            <param name="context">The metadata used to provide context to downstream services</param>
+            <returns>A response to the request on any success, or failure of the entire batch</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.IAmARepositoryOf`1.ReplaceAsync(System.String,`0,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <summary>
+            Replaces the value for the identifier.
+            </summary>
+            <param name="id">The Id used pick which item is replaced</param>
+            <param name="value">The values used to replace a item in the repo</param>
+            <param name="context">The metadata used to provide context to downstream services</param>
+            <param name="version">An optional CAS value.  If this value does not match the version in the repo then an error is returned and no data is updated</param>
+            <returns>A response to the request on success, failure.  If the Id does not exist, an error response is returned</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.IAmARepositoryOf`1.DeleteAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <summary>
+            Removes a value from the repo
+            </summary>
+            <param name="id">The Id used pick which item is replaced</param>
+            <param name="context">The metadata used to provide context to downstream services</param>
+            <param name="version">An optional CAS value.  If this value does not match the version in the repo then an error is returned and no data is deleted</param>
+            <returns>A response to the request on success, failure.  If the Id does not exist, an error response is returned</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.IInventoryQueryRepository`2">
+            <summary>
+            This is the inventory query repository, separate from the rest of the database code because it isn't appropriate for a generic.
+            </summary>
+            <typeparam name="TModel">The type of the model object</typeparam>
+            <typeparam name="TDatabase">The type of the database object</typeparam>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.IInventoryQueryRepository`2.RetrieveByOwnershipViewIdAsync(System.String)">
+            <summary>
+            Gets objects from the repository by ownership view ID.
+            </summary>
+            <param name="id">The Id used pick which item is retrieved</param>
+            <returns>A response to the request on success, failure, or match of the except version</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.InventoryQueryRepository`2">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.InventoryQueryRepository`2.#ctor(CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.IDynamoDBClientProvider,CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.ITableWrapper,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.InventoryQueryRepository{`0,`1}},CARVIM.Platform.Audit.IVersionHistoryRepository{`1},CARVIM.Platform.Audit.IVersionedRepository{CARVIM.Platform.Audit.VersionPointer},AutoMapper.IMapper,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.InventoryQueryRepository`2"/> class and dances the bamba.
+            </summary>
+            <param name="clientProvider">A client provider. AaaaaIE!</param>
+            <param name="tableWrapper">A table wrapper. Boom.</param>
+            <param name="logger">A logger. Chacha!</param>
+            <param name="versionHistoryRepository">A version history repository. Shalaka.</param>
+            <param name="versionPointerRepository">A version pointer repository. This comment is required.</param>
+            <param name="mapper">It's the map!</param>
+            <param name="table">A table. Clatter clatter.</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.InventoryQueryRepository`2.TableName">
+            <summary>
+            Gets the name of the DynamoDb table that this repository maps to.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.InventoryQueryRepository`2.RetrieveByOwnershipViewIdAsync(System.String)">
+            <summary>
+            Retrieves by ownership id.
+            </summary>
+            <param name="id">The ownership id</param>
+            <returns>A list of </returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.InventoryQueryRepository`2.LogSuccess(System.String,System.String)">
+            <summary>
+            Logs when a success occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.InventoryQueryRepository`2.LogError(System.String,System.Exception,System.String)">
+            <summary>
+            Logs when a error occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="exception">The exception returned from DynamoDB</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse">
+            <summary>
+            The response dto for any repository action request.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse.#ctor(System.String,CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus,System.String,System.Exception,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse"/> class.
+            </summary>
+            <param name="id">The id of the document resource</param>
+            <param name="status">The result status of the request</param>
+            <param name="message">A friendly readable message about any errors that may have occurred</param>
+            <param name="exception">An exception that may have occurred during the request</param>
+            <param name="version">The current version of the document resource</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse.#ctor(CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus,System.String,System.Exception)">
+             <summary>
+             Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse"/> class.
+            
+             This signature supports batch repository requests, those requests will not have a single Id or Version to reference.
+             </summary>
+             <param name="status">The result status of the request</param>
+             <param name="message">A friendly readable message about any errors that may have occurred</param>
+             <param name="exception">An exception that may have occurred during the request</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse.Id">
+            <summary>
+            Gets the id of the document resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse.Version">
+            <summary>
+            Gets the current version of the document resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse.Success">
+            <summary>
+            Gets a value indicating whether the requested repository action was successful.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse.Status">
+            <summary>
+            Gets the status of the requested repository action.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse.Message">
+            <summary>
+            Gets a friendly readable message describing any errors that may have occurred during the requested repository action.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse.Exception">
+            <summary>
+            Gets an exception that may have occurred during the requested repository action.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse`1">
+            <summary>
+            The response dto for any repository request with a result value.
+            </summary>
+            <typeparam name="TValue">The IMS type for the repository</typeparam>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse`1.#ctor(System.String,CoxAuto.Vince.InventoryManagementService.Pipelines.Contracts.ResponseStatus,System.String,System.Exception,`0,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse`1"/> class.
+            </summary>
+            <param name="id">The id of the document resource</param>
+            <param name="status">The result status of the request</param>
+            <param name="message">A friendly readable message about any errors that may have occurred</param>
+            <param name="exception">An exception that may have occurred during the request</param>
+            <param name="value">The document value retrieved by the request</param>
+            <param name="version">The current version of the document resource</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.RepositoryResponse`1.Value">
+            <summary>
+            Gets the document value retrieved by the repository request.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositoryResult">
+            <summary>
+            A result object to be used for UniqueConstraintRepository actions
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositoryResult.Document">
+            <summary>
+            Gets or sets the UniqueConstraintDocuments object.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositoryResult.Status">
+            <summary>
+            Gets or sets the response for UniqueConstraintRepository operation.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySession">
+            <summary>
+            A UniqueConstraintRepositorySession object
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySession.#ctor(CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbUniqueConstraintRepository,System.Collections.Generic.List{CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.UniqueConstraintDocument},Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySession"/> class.
+            </summary>
+            <param name="repository">The UniqueConstraintRepository used by this session</param>
+            <param name="documents">The UniqueConstraintDocuments used by this session.</param>
+            <param name="logger">The Logger used by this session.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySession.#ctor(CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.IDynamoDbUniqueConstraintRepository,CoxAuto.Vince.InventoryManagementService.Data.DynamoDB.UniqueConstraintDocument,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.DynamoDB.DynamoDbUniqueConstraintRepository})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySession"/> class.
+            </summary>
+            <param name="repository">The UniqueConstraintRepository used by this session</param>
+            <param name="document">The UniqueConstraintDocuments used by this session.</param>
+            <param name="logger">The Logger used by this session.</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySession.UniqueConstraintDocuments">
+            <summary>
+            Gets the UniqueConstraintDocuments used by this session.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySession.Logger">
+            <summary>
+            Gets or sets the Logger used by this session.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySession.Repository">
+            <summary>
+            Gets or sets the DynamoDbUniqueConstraintRepository used by this session.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySession.Documents">
+            <summary>
+            Gets or sets the UniqueConstraintDocuments used by this session.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySession.BeginAsync(System.Nullable{System.Int64})">
+            <summary>
+            Begins a UniqueConstraintRepositorySession
+            </summary>
+            <param name="ttl">The optional time-to-live for the record</param>
+            <returns>A status and UniqueConstraintRepositorySession if successful</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySession.CommitAsync">
+            <summary>
+            Commits the current Session
+            </summary>
+            <returns>The UniqueConstraintRepositoryStatus</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySession.DeleteAsync">
+            <summary>
+            Deletes the UniqueConstraintDocuments used by this session
+            </summary>
+            <returns>The UniqueConstraintRepositoryStatus</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySessionResult">
+            <summary>
+            Result object for UniqueConstraightRepositorySession.BeginAsync
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySessionResult.Document">
+            <summary>
+            Gets or sets the UniqueConstraintDocuments object.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySessionResult.Status">
+            <summary>
+            Gets or sets the response for UniqueConstraintRepository operation.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySessionResult.Message">
+            <summary>
+            Gets or sets the message
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositorySessionResult.ConflictingInventoryId">
+            <summary>
+            Gets or sets the conflicting InventoryId
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositoryStatus">
+            <summary>
+            Possible responses for Unique Constraint Repository
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositoryStatus.Success">
+            <summary>
+            Success
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositoryStatus.Conflict">
+            <summary>
+            Conflict - When an entry already exists
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositoryStatus.NotFound">
+            <summary>
+            Not Found
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.UniqueConstraintRepositoryStatus.Error">
+            <summary>
+            Error
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.IVehicleServiceRetryPolicy">
+            <summary>
+            A retry policy for AWS DynamoDB
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.IVehicleServiceRetryPolicy.Policy">
+            <summary>
+            Gets to policy to use for AWS DynamoDB
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1">
+            <inheritdoc />
+            <summary>
+            A repository for CRUDing data into VehicleService that returns standard success and error responses
+            </summary>
+            <typeparam name="TModel">The IMS type to CRUD via VehicleService</typeparam>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1._vehiclesApi">
+            <summary>
+            API to talk to VehicleService
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1._vehicleAuditApi">
+            <summary>
+            API to make use of VehicleService version audit capabilities
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1._rootNamespace">
+            <summary>
+            The root namespace for the repository model.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1._logger">
+            <summary>
+            A logger for logging what is going on
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1._retryPolicy">
+            <summary>
+            The retry policy used for all requests to VehicleService
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1._mapper">
+            <summary>
+            Automapper instance
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1._etagConverter">
+            <summary>
+            ETagConverter instance
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1.#ctor(CoxAuto.Carvim.VS.Client.IVehicleClient,CoxAuto.Carvim.VS.Client.IAuditClient,System.String,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository{`0}},CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.IVehicleServiceRetryPolicy,CoxAuto.Carvim.Shared.IEtagConverter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1"/> class.
+            </summary>
+            <param name="vehiclesApi">API to talk to VehicleService</param>
+            <param name="auditApi">API to talk to VehicleService audit framework</param>
+            <param name="rootNamespace">The root namespace for the repository model.</param>
+            <param name="logger">A logger for logging what is going on</param>
+            <param name="mapper">A mapper instance</param>
+            <param name="retryPolicy">A retry policy for VehicleService</param>
+            <param name="etagConverter">An EtagConverter instance</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1.CreateAsync(`0,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1.RetrieveAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1.RetrieveVersionAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1.RetrieveVersionsAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1.RetrieveByOwnershipViewIdentifierAsync(System.String)">
+            <summary>
+            Not Implemented by VehicleServiceRepository
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1.RetrieveManyAsync(System.String[],CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext)">
+            <summary>
+            Not Implemented by VehicleServiceRepository
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1.ReplaceAsync(System.String,`0,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1.DeleteAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1.GetResponseStatusFromVehicleServiceReturnCode(System.Int32)">
+            <summary>
+            Maps return codes from VehicleService to IMS responses
+            </summary>
+            <param name="statusCode">The code from VehicleService</param>
+            <returns>A IMS repository response</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1.LogSuccess(System.String,System.String)">
+            <summary>
+            Logs when a success occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1.LogError(System.String,CoxAuto.Carvim.VS.Client.VehicleServiceException,System.String)">
+            <summary>
+            Logs when a error occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="exception">The exception returned from VehicleService</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRepository`1.LogError(System.String,System.String,System.String)">
+            <summary>
+            Logs when a error occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="errorMessage">The error that occurred</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRetryPolicy">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRetryPolicy.#ctor(Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRetryPolicy})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRetryPolicy"/> class.
+            </summary>
+            <param name="logger">A logger instance.</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRetryPolicy.Policy">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRetryPolicy.OnHalfOpen">
+            <summary>
+            Logs when the circuit breaker is half-open and testing if it should stay open (broken) or closed (resume operation).
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRetryPolicy.OnReset(Polly.Context)">
+            <summary>
+            Logs when the circuit breaker is closed (resumed operation).
+            </summary>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRetryPolicy.OnBreak(System.Exception,Polly.CircuitBreaker.CircuitState,System.TimeSpan,Polly.Context)">
+            <summary>
+            Logs when the circuit breaker is opened (broken)
+            </summary>
+            <param name="exception">The last exemption thrown</param>
+            <param name="circuitState">The current state of the circuit</param>
+            <param name="timeSpan">The elapsed time for the request</param>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleService.VehicleServiceRetryPolicy.OnRetry(System.Exception,System.TimeSpan,System.Int32,Polly.Context)">
+            <summary>
+            Logs when a request fails and is retried
+            </summary>
+            <param name="exception">The last exemption thrown</param>
+            <param name="timeSpan">The elapsed time for the request</param>
+            <param name="count">The current retry count (1 indexed)</param>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.IAmAVehicleSorusPropertyMapper">
+            <summary>
+            Provides mapping information for translating IMS properties => VehicleSORus properties and vice versa.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.IAmAVehicleSorusPropertyMapper.ToVehicleSorusPropertiesAndLocks``1(System.String,``0)">
+            <summary>
+            Maps an Inventory Management Service domain model to a VehicleSORus property dictionary.
+            </summary>
+            <param name="rootNamespace">The VehicleSorus root namespace for the model property names.</param>
+            <param name="value">The model to map</param>
+            <typeparam name="TModel">The type of the model to be mapped</typeparam>
+            <returns>A VehicleSORus property dictionary</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.IAmAVehicleSorusPropertyMapper.ToDomainModel``1(System.String,CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestResponse,System.String)">
+            <summary>
+            Maps a VehicleSORus response dto to an Inventory Management Service domain model.
+            </summary>
+            <param name="rootNamespace">The VehicleSorus root namespace for the model property names.</param>
+            <param name="responseResponse">The VehicleSorus response dto to map</param>
+            <param name="responseVersion">The version of the document.</param>
+            <typeparam name="TModel">The type of the model to be mapped to and returned</typeparam>
+            <returns>A hydrated IMS model</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.IVehicleSoRusRetryPolicy">
+            <summary>
+            A retry policy for AWS DynamoDB
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.IVehicleSoRusRetryPolicy.Policy">
+            <summary>
+            Gets to policy to use for AWS DynamoDB
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.PropertiesAndLocks">
+            <summary>
+            A dto containing a collection of document properties and property locks in a format compatible with VehicleSORus.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.PropertiesAndLocks.Properties">
+            <summary>
+            Gets or sets the key-value collection containing VehicleSORus compatible document properties.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.PropertiesAndLocks.Locks">
+            <summary>
+            Gets or sets the key-value collection containing VehicleSORus compatible document property locks.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusDeflator">
+            <summary>
+            Service for flattening an object into a VehicleSorus property dictionary.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusDeflator._rootNamespace">
+            <summary>
+            The initial namespace added to all properties
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusDeflator._jObject">
+            <summary>
+            The <see cref="T:Newtonsoft.Json.Linq.JObject"/> flatted by this class
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusDeflator._lockPaths">
+            <summary>
+            The list of locked paths.  All of these paths and their children are locked
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusDeflator._unlockPaths">
+            <summary>
+            The list of unlocked paths.  All of these paths and their children are unlocked
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusDeflator.#ctor(System.String,Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusDeflator"/> class.
+            </summary>
+            <param name="rootNamespace">The initial namespace added to all properties</param>
+            <param name="jObject">The <see cref="T:Newtonsoft.Json.Linq.JObject"/> flatted by this class</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusDeflator.ToPropertiesAndLocks">
+            <summary>
+            Convert the JObject into a flattened shape and its locks
+            </summary>
+            <returns>A list of properties and the matching locks</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusDeflator.ExtractLockPaths">
+            <summary>
+            Pull all of the locked paths from the provided <see cref="T:Newtonsoft.Json.Linq.JObject"/>
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusDeflator.AddPropertiesAndLocksFromJToken(CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.PropertiesAndLocks,System.String,Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Adds the properties and locks based on the provided token
+            </summary>
+            <param name="propertiesAndLocks">The object to augment with the flattened properties and locks</param>
+            <param name="flattenedPath">The flattened path to the provided token</param>
+            <param name="token">The token to flatten</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusDeflator.AddLocks(CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.PropertiesAndLocks,System.String,Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Applies lock behavior for properties based on the JPath.  See http://goessner.net/articles/JsonPath/ for details
+            </summary>
+            <param name="propertiesAndLocks">The object that will receive the lock status</param>
+            <param name="flattenedPath">The path of the item that may get locked / unlocked</param>
+            <param name="token">The token whose path will be evaluated</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusDeflator.AddPropertiesAndLocksFromJArray(CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.PropertiesAndLocks,System.String,Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Adds an Array of properties to the flattened shape
+            </summary>
+            <param name="propertiesAndLocks">The object to augment with the flattened properties and locks</param>
+            <param name="flattenedPath">The flattened path to the provided token</param>
+            <param name="jArray">The array to flatten</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusInflator">
+            <summary>
+            Service for unflattening a flat VehicleSorus document into a JObject with a normal tree structure.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusInflator.ToJObject(System.String,CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestType)">
+            <summary>
+            Hydrates a flat VehicleSorus document into a tree structured <see cref="T:Newtonsoft.Json.Linq.JObject"/> value.
+            </summary>
+            <param name="rootNamespace">The root that is preprended to all keys in the flattened dictionary.</param>
+            <param name="vehicleSorusInput">A VehicleSorus document.</param>
+            <returns>The un-flattened value</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusInflator.AttachUnflattendProperties(Newtonsoft.Json.Linq.JObject,System.String,Newtonsoft.Json.Linq.JProperty)">
+            <summary>
+            Evaluates a VehicleSorus property as an object tree and attaches it to the parent.
+            </summary>
+            <param name="currentParent">The parent to attach the object tree to.</param>
+            <param name="currentPath">The current path to the parent.</param>
+            <param name="propertyToAdd">The VehicleSorus property to be evaluated.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusInflator.GetOrAddChild(Newtonsoft.Json.Linq.JObject,System.String)">
+            <summary>
+            Gets an existing child object on a specified parent, or creates one if it doesn't exist.
+            </summary>
+            <param name="parent">The parent object.</param>
+            <param name="childName">The property name of the child object.</param>
+            <returns>The retrieved or created child object.</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusInflator.UnflattenArray(System.String,Newtonsoft.Json.Linq.JArray)">
+            <summary>
+            Builds an array of unflattened items from a VehicleSorus array structure.
+            </summary>
+            <param name="currentPath">The current path in the VehicleSorus document.</param>
+            <param name="arrayValue">The VehicleSorus array structure.</param>
+            <returns>An array of unflattened items.</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusInflator.AttachProperty(Newtonsoft.Json.Linq.JObject,System.String,Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Attaches a property to an existing object.
+            </summary>
+            <param name="parent">The parent object to add to.</param>
+            <param name="propertyName">The name of the property to add.</param>
+            <param name="propertyValue">The value of the property to add.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusInflator.DecorateWithCommonFields(Newtonsoft.Json.Linq.JObject,CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestType)">
+            <summary>
+            Add the common fields from the object that are not vehicle properties related.
+            </summary>
+            <param name="parent">The parent object to decorate</param>
+            <param name="input">The VehicleSORus shape</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusInflator.DecorateWithLocks(Newtonsoft.Json.Linq.JObject,System.Collections.Generic.IReadOnlyCollection{System.String})">
+            <summary>
+            Adds locks to the JObject shape
+            </summary>
+            <param name="parent">The parent object to add the locks to</param>
+            <param name="lockedFields">The locks to add</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusPropertyMapper">
+            <inheritdoc />
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusPropertyMapper._camelCaseSerializer">
+            <summary>
+            A JsonSerializer that camel-cases all property names.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusPropertyMapper.ToVehicleSorusPropertiesAndLocks``1(System.String,``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusPropertyMapper.ToDomainModel``1(System.String,CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestResponse,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1">
+            <inheritdoc />
+            <summary>
+            A repository for CRUDing data into VehicleSORus that returns standard success and error responses
+            </summary>
+            <typeparam name="TModel">The IMS type to CRUD via VehicleSORus</typeparam>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1._vehiclesApi">
+            <summary>
+            API to talk to VehicleSORus
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1._mapper">
+            <summary>
+            Mapper to map IMS => VehicleSORus and VehicleSORus => IMS
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1._rootNamespace">
+            <summary>
+            The root namespace for the repository model.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1._logger">
+            <summary>
+            A logger for logging what is going on
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1._retryPolicy">
+            <summary>
+            The retry policy used for all requests to VehicleSORus
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1.#ctor(CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient,CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.IAmAVehicleSorusPropertyMapper,System.String,Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository{`0}},CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.IVehicleSoRusRetryPolicy)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1"/> class.
+            </summary>
+            <param name="vehiclesApi">API to talk to VehicleSORus</param>
+            <param name="mapper">Mapper to map IMS => VehicleSORus and VehicleSORus => IMS</param>
+            <param name="rootNamespace">The root namespace for the repository model.</param>
+            <param name="logger">A logger for logging what is going on</param>
+            <param name="retryPolicy">A retry policy for vehicleSORus</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1.CreateAsync(`0,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1.RetrieveAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1.RetrieveByOwnershipViewIdentifierAsync(System.String)">
+            <summary>
+            Not Implemented by VehicleSorusRepository
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1.RetrieveManyAsync(System.String[],CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext)">
+            <summary>
+            Not Implemented by VehicleSorusRepository
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1.RetrieveVersionAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1.RetrieveVersionsAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1.ReplaceAsync(System.String,`0,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1.DeleteAsync(System.String,CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1.GetResponseStatusFromVehicleSorusReturnCode(System.Int32)">
+            <summary>
+            Maps return codes from VehicleSORus to IMS responses
+            </summary>
+            <param name="statusCode">The code from VehicleSORus</param>
+            <returns>A IMS repository response</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1.LogSuccess(System.String,System.String)">
+            <summary>
+            Logs when a success occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1.LogError(System.String,CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException,System.String)">
+            <summary>
+            Logs when a error occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="exception">The exception returned from VehicleSORus</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRepository`1.LogError(System.String,System.String,System.String)">
+            <summary>
+            Logs when a error occurs
+            </summary>
+            <param name="attemptedAction">What happened</param>
+            <param name="errorMessage">The error that occurred</param>
+            <param name="resourceId">The resource Id used to add context to the log</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRetryPolicy">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRetryPolicy.#ctor(Microsoft.Extensions.Logging.ILogger{CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRetryPolicy})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRetryPolicy"/> class.
+            </summary>
+            <param name="logger">A logger instance.</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRetryPolicy.Policy">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRetryPolicy.OnHalfOpen">
+            <summary>
+            Logs when the circuit breaker is half-open and testing if it should stay open (broken) or closed (resume operation).
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRetryPolicy.OnReset(Polly.Context)">
+            <summary>
+            Logs when the circuit breaker is closed (resumed operation).
+            </summary>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRetryPolicy.OnBreak(System.Exception,Polly.CircuitBreaker.CircuitState,System.TimeSpan,Polly.Context)">
+            <summary>
+            Logs when the circuit breaker is opened (broken)
+            </summary>
+            <param name="exception">The last exemption thrown</param>
+            <param name="circuitState">The current state of the circuit</param>
+            <param name="timeSpan">The elapsed time for the request</param>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VehicleSORus.VehicleSorusRetryPolicy.OnRetry(System.Exception,System.TimeSpan,System.Int32,Polly.Context)">
+            <summary>
+            Logs when a request fails and is retried
+            </summary>
+            <param name="exception">The last exemption thrown</param>
+            <param name="timeSpan">The elapsed time for the request</param>
+            <param name="count">The current retry count (1 indexed)</param>
+            <param name="context">The Polly context</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Repositories.VersionHelper">
+            <summary>
+            A helper to manage version updating and formatting.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Repositories.VersionHelper.GetNextVersion">
+            <summary>
+            Generate a unique string to be used as
+            a version.
+            </summary>
+            <returns>The updated version</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,319 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoxAuto.Vince.InventoryManagementService.WebRouting</name>
+    </assembly>
+    <members>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider">
+            <summary>
+            Interface for a provider that generates urls for resources in the Inventory Management Service.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider.ToInventoryUri(System.String,System.String)">
+            <summary>
+            Generates a URI to retrieve a inventory-entry
+            </summary>
+            <param name="inventoryId">An inventory id</param>
+            <param name="auditVersion">The audit version</param>
+            <returns>A fully qualified URI</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider.ToInventoryEntryUri(System.String,System.String)">
+            <summary>
+            Generates a URI to retrieve a inventory-entry
+            </summary>
+            <param name="inventoryEntryId">An inventory-entry id</param>
+            <param name="auditVersion">The audit version</param>
+            <returns>A fully qualified URI</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider.ToInventoryDetailUri(System.String)">
+            <summary>
+            Generates a URI to retrieve a inventory-details
+            </summary>
+            <param name="inventoryDetailsId">An inventory-detail Id</param>
+            <returns>A fully qualified URI</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider.ToSellerCommentsUri(System.String)">
+            <summary>
+            Generates a URI to retrieve seller-comments
+            </summary>
+            <param name="sellerCommentsId">A seller-comments id</param>
+            <returns>A fully qualified URI</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider.ToPricesUri(System.String)">
+            <summary>
+            Generates a URI to retrieve prices
+            </summary>
+            <param name="priceId">A prices id</param>
+            <returns>A fully qualified URI</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider.ToVehiclesUri(System.String)">
+            <summary>
+            Generates a URI to retrieve Vehicle data
+            </summary>
+            <param name="vehicleId">A vehicle id</param>
+            <returns>A fully qualified URI</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider.ToInventoryViewsUri(System.String)">
+            <summary>
+            Generates a URI to retrieve inventory view data
+            </summary>
+            <param name="inventoryViewId">An inventory view id</param>
+            <returns>A fully qualified URI</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider.ToCustomFieldValuesUri(System.String)">
+            <summary>
+            Generates a URI to retrieve custom field data
+            </summary>
+            <param name="customFieldId">An inventory view id</param>
+            <returns>A fully qualified URI</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider.ToInventoryTransferUri(System.String)">
+            <summary>
+            Generates a URI to retrieve a inventory transfer record
+            </summary>
+            <param name="transferId">An inventory id</param>
+            <returns>A fully qualified URI</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteConstants">
+            <summary>
+            A collection of routes in IMS.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteConstants.DiagnosticsRoute">
+            <summary>
+            A route for monitoring the service's health.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteConstants.SwaggerUI">
+            <summary>
+            A route to the UI wrapper around Swagger.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteConstants.InventoryRoute">
+            <summary>
+            A route to pieces of inventory.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteConstants.InventoryDetailsRoute">
+            <summary>
+            A subroute to inventory details.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteConstants.SellerCommentsRoute">
+            <summary>
+            A subroute to seller comments.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteConstants.InventoryEntryRoute">
+            <summary>
+            A subroute to inventory.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteConstants.PricesRoute">
+            <summary>
+            A subroute to prices.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteConstants.VehiclesRoute">
+            <summary>
+            A subroute to vehicles.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteConstants.InventoryViewsRoute">
+            <summary>
+            A subroute to inventory views.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteConstants.CustomFieldValuesRoute">
+            <summary>
+            A subroute to custom field values.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteConstants.InventoryTransferRoute">
+            <summary>
+            A subroute to transfer ownership.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteProvider">
+            <summary>
+            A provider that generates urls for resources in the Inventory Management Service.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteProvider._hostInformation">
+            <summary>
+            Used to determine the base URL
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteProvider.#ctor(CoxAuto.Vince.InventoryManagementService.WebRouting.IProvideHostInformation)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteProvider"/> class.
+            </summary>
+            <param name="hostInformation">Used to determine the base URL</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteProvider.ToInventoryUri(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteProvider.ToInventoryTransferUri(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteProvider.ToInventoryEntryUri(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteProvider.ToInventoryDetailUri(System.String)">
+            <summary>
+            Generates a URI to retrieve a inventory-details
+            </summary>
+            <param name="inventoryDetailsId">An inventory-detail Id</param>
+            <returns>A fully qualified URI</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteProvider.ToSellerCommentsUri(System.String)">
+            <summary>
+            Generates a URI to retrieve seller-comments
+            </summary>
+            <param name="sellerCommentsId">A seller-comments Id</param>
+            <returns>A fully qualified URI</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteProvider.ToPricesUri(System.String)">
+            <summary>
+            Generates a URI to retrieve prices
+            </summary>
+            <param name="priceId">A prices Id</param>
+            <returns>A fully qualified URI</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteProvider.ToVehiclesUri(System.String)">
+            <summary>
+            Generates a URI to retrieve Vehicle data
+            </summary>
+            <param name="vehicleId">A vehicle Id</param>
+            <returns>A fully qualified URI</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteProvider.ToInventoryViewsUri(System.String)">
+            <summary>
+            Generates a URI to retrieve inventory view data
+            </summary>
+            <param name="inventoryViewId">An inventory view id</param>
+            <returns>A fully qualified URI</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.InventoryManagementServiceRouteProvider.ToCustomFieldValuesUri(System.String)">
+            <summary>
+            Generates a URI to retrieve custom field data
+            </summary>
+            <param name="customFieldId">A custom field value id</param>
+            <returns>A fully qualified URI</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.WebRouting.IProvideDomainRoute">
+            <summary>
+            Provides a Uri route to a domain resource.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.IProvideDomainRoute.GetRouteUri(System.String,System.String)">
+            <summary>
+            Provides the domain specific resource route for the provided resource identifier.
+            </summary>
+            <param name="resourceId">The resource identifier</param>
+            <param name="auditVersion">The audit version</param>
+            <returns>A Uri to the specified resource</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.WebRouting.IProvideHostInformation">
+            <summary>
+            Provides access to hosting specific information.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.IProvideHostInformation.GetHostUri">
+            <summary>
+            Gets the Uri in which the application is hosted.
+            </summary>
+            <returns>The application's Uri.</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.IProvideHostInformation.GetVehicleSorusUri">
+            <summary>
+            Gets the Uri in which the VehicleSorus is hosted.
+            </summary>
+            <returns>The VehicleSorus' Uri.</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.CustomFieldValuesRouteProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.CustomFieldValuesRouteProvider.#ctor(CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.CustomFieldValuesRouteProvider"/> class.
+            </summary>
+            <param name="serviceRouteProvider">An <see cref="T:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider" /> instance.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.CustomFieldValuesRouteProvider.GetRouteUri(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.InventoryDetailRouteProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.InventoryDetailRouteProvider.#ctor(CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.InventoryDetailRouteProvider"/> class.
+            </summary>
+            <param name="serviceRouteProvider">An <see cref="T:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider" /> instance.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.InventoryDetailRouteProvider.GetRouteUri(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.InventoryEntryRouteProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.InventoryEntryRouteProvider.#ctor(CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.InventoryEntryRouteProvider"/> class.
+            </summary>
+            <param name="serviceRouteProvider">An <see cref="T:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider" /> instance.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.InventoryEntryRouteProvider.GetRouteUri(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.InventoryRouteProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.InventoryRouteProvider.#ctor(CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.InventoryRouteProvider"/> class.
+            </summary>
+            <param name="serviceRouteProvider">An <see cref="T:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider" /> instance.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.InventoryRouteProvider.GetRouteUri(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.PricesRouteProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.PricesRouteProvider.#ctor(CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.PricesRouteProvider"/> class.
+            </summary>
+            <param name="serviceRouteProvider">An <see cref="T:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider" /> instance.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.PricesRouteProvider.GetRouteUri(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.SellerCommentsRouteProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.SellerCommentsRouteProvider.#ctor(CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.SellerCommentsRouteProvider"/> class.
+            </summary>
+            <param name="serviceRouteProvider">An <see cref="T:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider" /> instance.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.SellerCommentsRouteProvider.GetRouteUri(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.VehicleRouteProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.VehicleRouteProvider.#ctor(CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.VehicleRouteProvider"/> class.
+            </summary>
+            <param name="serviceRouteProvider">An <see cref="T:CoxAuto.Vince.InventoryManagementService.WebRouting.IInventoryManagementServiceRouteProvider" /> instance.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.WebRouting.Providers.VehicleRouteProvider.GetRouteUri(System.String,System.String)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

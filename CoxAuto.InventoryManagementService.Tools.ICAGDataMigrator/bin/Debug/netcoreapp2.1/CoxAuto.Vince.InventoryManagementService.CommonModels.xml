@@ -1,0 +1,478 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoxAuto.Vince.InventoryManagementService.CommonModels</name>
+    </assembly>
+    <members>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationData">
+            <summary>
+            Represents all of the authentication data associated with the current principal.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationData.#ctor(System.Security.Principal.IIdentity)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationData"/> class.
+            </summary>
+            <param name="identity">The current principal's identity.</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationData.IsAuthenticated">
+            <summary>
+            Gets a value indicating whether the current principal is authenticated or not.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationData.IsServiceAccount">
+            <summary>
+            Gets a value indicating whether the principal is a service account (as opposed to a user account).
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationData.ClientId">
+            <summary>
+            Gets the client id the token was issued to.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationData.PrincipalCrn">
+            <summary>
+            Gets the Crn associated with the current principal.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationData.Scopes">
+            <summary>
+            Gets the Scopes granted to the current principal.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationData.Expiration">
+            <summary>
+            Gets the expiration for the current principal's access token.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationData.Permissions">
+            <summary>
+            Gets or sets the permissions for the current user specified by Access Control.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationData.GetAllScopesWithContext(System.String)">
+            <summary>
+            Retrieves all scopes that match the context
+            </summary>
+            <param name="context">The requested context</param>
+            <returns>A list of scopes</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationData.HasScope(System.String,System.String)">
+            <summary>
+            Determines if this object has the matching scope
+            </summary>
+            <param name="context">The context of the scope</param>
+            <param name="action">The action to match on the context</param>
+            <returns>True if the scope is found.  False if the scope is not found.</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationData.HasScopeWithMatchingAction(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Determines if this object has the matching scope and at lest one of the provided actions
+            </summary>
+            <param name="context">The context of the scope</param>
+            <param name="acceptableActions">The action to match on the context</param>
+            <returns>True if the context matches and at least one of the actions match the list provided.  False if the scope is not found.</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationScope">
+            <summary>
+            Represents a context/action pair derived from a scope.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationScope.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationScope"/> class.
+            </summary>
+            <param name="scope">A scope to decode.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationScope.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationScope"/> class.
+            </summary>
+            <param name="context">The area in which an <paramref name="action"/> may be performed.</param>
+            <param name="action">The type of action that may be performed within a given <paramref name="context"/>.</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationScope.Context">
+            <summary>
+            Gets the area in which an <see cref="P:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationScope.Action"/> may be performed.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationScope.Action">
+            <summary>
+            Gets the type of action that may be performed within a given <see cref="P:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationScope.Context"/>.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationScope.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationScope.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.CommonModels.AuthenticationScope.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext">
+            <summary>
+            DTO to provide relevant context to Carvim related APIs
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext.EntityId">
+            <summary>
+            Gets or sets EntityId
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext.TenantId">
+            <summary>
+            Gets or sets TenantId
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext.ClientId">
+            <summary>
+            Gets or sets user's clientId (on behalf of which application)
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext.PrincipalCrn">
+            <summary>
+            Gets or sets user's pricipalCrn (the actual UserId)
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext.CoxAutoCorrelationId">
+            <summary>
+            Gets or sets CoxAutoCorrelationId
+            <para></para>
+            Used for Cookbook compliant api tracing https://ghe.coxautoinc.com/CoxAuto/api-cookbook#i-want-to-provide-traceability-of-api-calls-through-multiple-api-hops
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.IHaveReadModelProperties">
+            <summary>
+            The interface for a read-friendly document model for use in responses to GET requests.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.IHaveReadModelProperties.Href">
+            <summary>
+            Gets or sets an Href URI that can be used to retrieve the resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.IHaveReadModelProperties.ThisVersion">
+            <summary>
+            Gets or sets or detonates the this version href.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.IHaveReadModelPropertiesWithParent">
+            <summary>
+            The interface for a read-friendly document model with a document parent.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.IHaveReadModelPropertiesWithParent.Parent">
+            <summary>
+            Gets or sets an Href URI that can be used to retrieve the parent resource.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.IHaveReadModelPropertiesWithParentAndTenant">
+            <summary>
+            The interface for a read-friendly document model with a document parent and an associated tenant context.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.IHaveReadModelPropertiesWithParentAndTenant.TenantId">
+            <summary>
+            Gets or sets the id of the tenant context associated with the resource.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.LockedField">
+            <summary>
+            A dto that indicates the lock state of a particular document field.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.LockedField.LockedStatusKind">
+            <summary>
+            Enumerates the possible states for a locked field.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.CommonModels.LockedField.LockedStatusKind.Unlocked">
+            <summary>
+            The status representing an UNLOCKED path.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.CommonModels.LockedField.LockedStatusKind.Locked">
+            <summary>
+            The status representing a LOCKED path.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.LockedField.Path">
+            <summary>
+            Gets or sets the JSON Path to the target field.
+            </summary>
+            <remarks>See <a href="http://goessner.net/articles/JsonPath/" /> for documentation on JSON Path</remarks>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.LockedField.Value">
+            <summary>
+            Gets or sets the lock state of the target field.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.AuthenticationRequest">
+            <summary>
+            A request that includes the current authentication context.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.AuthenticationRequest.AuthenticationData">
+            <inheritdoc/>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IAuthenticationRequest">
+            <summary>
+            Represents a request that includes the current authentication context.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IAuthenticationRequest.AuthenticationData">
+            <summary>
+            Gets or sets the current authentication context data for the request.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.ICommandRequest`1">
+            <summary>
+            The interface for all pipeline requests to execute specific non-RESTful commands on an Inventory Management Service managed resource.
+            </summary>
+            <typeparam name="TResponse">The type of the expected output response</typeparam>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.ICommandRequest`1.Id">
+            <summary>
+            Gets or sets the identifier of the target resource.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.ICommonRequest`1">
+            <summary>
+            The common interface for all pipeline requests executed on Inventory Management Service managed resources.
+            </summary>
+            <typeparam name="TResponse">The type of the expected output response</typeparam>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.ICommonRequest`1.CorrelationId">
+            <summary>
+            Gets or sets an identifier that can be used to correlate emitted events to the request that triggered them.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.ICommonRequest`1.CoxAutoCorrelationId">
+            <summary>
+            Gets or sets an identifier that can be used to trace calls between services
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.CommonRequestExtensions">
+            <summary>
+            Extension methods to the <see cref="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.ICommonRequest`1"/> interface
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.CommonRequestExtensions.ToRequestContext``1(CoxAuto.Vince.InventoryManagementService.CommonModels.Request.ICommonRequest{``0})">
+            <summary>
+            Adapt this <paramref name="request"/> to a <see cref="T:CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext"/>
+            </summary>
+            <typeparam name="TResponse">The type parameter for this <see cref="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.ICommonRequest`1"/></typeparam>
+            <param name="request">This <see cref="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.ICommonRequest`1"/></param>
+            <returns>The <see cref="T:CoxAuto.Vince.InventoryManagementService.CommonModels.CarvimDomainRequestContext"/></returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IDeleteRequest`2">
+            <summary>
+            The interface for all pipeline requests to delete an Inventory Management Service managed resource.
+            </summary>
+            <typeparam name="TModel">The type of the expected model</typeparam>
+            <typeparam name="TResponse">The type of the expected output response</typeparam>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IDeleteRequest`2.Id">
+            <summary>
+            Gets or sets the identifier of the target resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IDeleteRequest`2.Version">
+            <summary>
+            Gets or sets the expected current version of the target resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IDeleteRequest`2.IfMatch">
+            <summary>
+            Gets or sets the ETag that represents the current version of the target resource.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IDeleteRequest`1">
+            <summary>
+            The interface for all pipeline requests to delete an Inventory Management Service managed resource.
+            </summary>
+            <typeparam name="TResponse">The type of the expected output response</typeparam>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IDeleteRequest`1.Id">
+            <summary>
+            Gets or sets the identifier of the target resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IDeleteRequest`1.Version">
+            <summary>
+            Gets or sets the expected current version of the target resource.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IEntityRequest`1">
+            <summary>
+            The interface for all Inventory Management Service pipeline requests executed in the context of an entity.
+            </summary>
+            <typeparam name="TResponse">The type of the expected output response</typeparam>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IEntityRequest`1.EntityId">
+            <summary>
+            Gets or sets the identifier of the entity context to execute the request in.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IEntityRequest`1.Entity">
+            <summary>
+            Gets or sets the model for the entity context to execute the request in.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IGetRequest`2">
+            <summary>
+            The interface for all pipeline requests to retrieve an Inventory Management Service managed resource.
+            </summary>
+            <typeparam name="TResponse">The type of the expected output response</typeparam>
+            <typeparam name="TModel">The type of the resource model expected in the <typeparamref name="TResponse"/></typeparam>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IGetRequest`2.Id">
+            <summary>
+            Gets or sets the identifier of the target resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IGetRequest`2.ExceptVersion">
+            <summary>
+            Gets or sets the version for which we do not want to retrieve the target resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IGetRequest`2.Version">
+            <summary>
+            Gets or sets the vesion to retrieve.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IPatchRequest`2">
+            <summary>
+            The interface for all pipeline requests to patch an Inventory Management Service managed resource.
+            </summary>
+            <typeparam name="TResponse">The type of the expected output response</typeparam>
+            <typeparam name="TModel">The type of the model containing patch-able properties of the resource</typeparam>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IPatchRequest`2.Id">
+            <summary>
+            Gets or sets the identifier of the target resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IPatchRequest`2.Version">
+            <summary>
+            Gets or sets the expected current version the target resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IPatchRequest`2.Value">
+            <summary>
+            Gets or sets the document containing the JsonPatch commands to execute.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IPostRequest`2">
+            <summary>
+            The interface for all pipeline requests to create a new Inventory Management Service managed resource.
+            </summary>
+            <typeparam name="TResponse">The type of the expected output response</typeparam>
+            <typeparam name="TModel">The type of the resource model to be created</typeparam>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IPostRequest`2.Value">
+            <summary>
+            Gets or sets the model containing the properties to replace on the target resource.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IPutRequest`2">
+            <summary>
+            The interface for all pipeline requests to replace an Inventory Management Service managed resource.
+            </summary>
+            <typeparam name="TResponse">The type of the expected output response</typeparam>
+            <typeparam name="TModel">The type of the model containing replace-able properties of the resource</typeparam>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IPutRequest`2.Id">
+            <summary>
+            Gets or sets the identifier of the target resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IPutRequest`2.Version">
+            <summary>
+            Gets or sets the expected current version of the target resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Request.IPutRequest`2.Value">
+            <summary>
+            Gets or sets the model containing all the replacement values for the target resource.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Response.ICommandResponse">
+            <summary>
+            The common interface for all pipeline responses to a command request on an Inventory Management Service managed resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Response.ICommandResponse.Version">
+            <summary>
+            Gets or sets the current version of the affected resource, if successful.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Response.ICommonResponse">
+            <summary>
+            The interface for all pipeline responses resulting from the execution of a pipeline request on an Inventory Management Service managed resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Response.ICommonResponse.Id">
+            <summary>
+            Gets or sets the identifier of the target resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Response.ICommonResponse.ResourceUri">
+            <summary>
+            Gets or sets the Href URI that can be used to retrieve the target resource.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Response.IDeleteResponse">
+            <summary>
+            The common interface for all pipeline responses to a delete request on an Inventory Management Service managed resource.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Response.IGetResponse`1">
+            <summary>
+            The common interface for all pipeline responses to a retrieve request on an Inventory Management Service managed resource.
+            </summary>
+            <typeparam name="TModel">The type of the model retrieved in the response</typeparam>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Response.IGetResponse`1.Value">
+            <summary>
+            Gets or sets a read-friendly version of the retrieved resource model.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Response.IGetResponse`1.Version">
+            <summary>
+            Gets or sets the current version of the retrieved resource.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Response.IPatchResponse">
+            <summary>
+            The common interface for all pipeline responses to a patch request on an Inventory Management Service managed resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Response.IPatchResponse.Version">
+            <summary>
+            Gets or sets the new current version of the patched resource, if successful.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Response.IPostResponse">
+            <summary>
+            The common interface for all pipeline responses to a create request on an Inventory Management Service managed resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Response.IPostResponse.Version">
+            <summary>
+            Gets or sets the current version of the newly created resource, if successful.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.CommonModels.Response.IPutResponse">
+            <summary>
+            The common interface for all pipeline responses to a replace request on an Inventory Management Service managed resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.CommonModels.Response.IPutResponse.Version">
+            <summary>
+            Gets or sets the new current version of the replaced document, if successful.
+            </summary>
+        </member>
+    </members>
+</doc>

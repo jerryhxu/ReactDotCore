@@ -1,0 +1,97 @@
+############################################
+# Thou shalt not make changes to this file #
+# Any Changes you make may be lost         #
+############################################
+
+[*.css]
+# See https://ghe.coxautoinc.com/HomeNet/code-standards/blob/master/CSS%20Code%20Standard.md
+
+# Not part of our coding standards, but a good thing to cleanup
+trim_trailing_whitespace = true
+
+[*.js]
+# See https://ghe.coxautoinc.com/HomeNet/code-standards/blob/master/JavaScript%20Code%20Standard.md
+
+# Not part of our coding standards, but a good thing to cleanup
+trim_trailing_whitespace = true
+
+# Maintain strict indentation using tabs only. Do not use spaces for formatting
+indent_style = tab
+
+[*.cs]
+# See https://ghe.coxautoinc.com/HomeNet/code-standards/blob/master/C%23%20Code%20Standard.md
+
+# Use Pascal casing for types
+dotnet_naming_rule.types_must_use_pascal_case.severity = warning
+dotnet_naming_rule.types_must_use_pascal_case.symbols = type_symbols
+dotnet_naming_rule.types_must_use_pascal_case.style = type_case
+dotnet_naming_symbols.type_symbols.applicable_kinds = class,struct,enum
+dotnet_naming_style.type_case.capitalization = pascal_case
+
+# Use Pascal casing for properties and method names
+dotnet_naming_rule.properties_methods_must_use_pascal_case.severity = warning
+dotnet_naming_rule.properties_methods_must_use_pascal_case.symbols = property_method_symbols
+dotnet_naming_rule.properties_methods_must_use_pascal_case.style = property_method_case
+dotnet_naming_symbols.property_method_symbols.applicable_kinds = property,method
+dotnet_naming_style.property_method_case.capitalization = pascal_case
+
+# Use Pascal casing for constants
+dotnet_naming_rule.constants_must_use_pascal_case.severity = warning
+dotnet_naming_rule.constants_must_use_pascal_case.symbols = constant_symbols
+dotnet_naming_rule.constants_must_use_pascal_case.style = constant_case
+dotnet_naming_symbols.constant_symbols.applicable_kinds = field
+dotnet_naming_symbols.constant_symbols.required_modifiers = const
+dotnet_naming_style.constant_case.capitalization = pascal_case
+
+# Use camel casing for method arguments
+dotnet_naming_rule.parameters_must_use_camel_case.severity = warning
+dotnet_naming_rule.parameters_must_use_camel_case.symbols = parameter_symbols
+dotnet_naming_rule.parameters_must_use_camel_case.style = parameter_case
+dotnet_naming_symbols.parameter_symbols.applicable_kinds = parameter
+dotnet_naming_style.parameter_case.capitalization = camel_case
+
+# Prefix private member variables with an underscore. Use camel case after the underscore
+dotnet_naming_rule.private_fields_must_use_camel_case_and_underscore_prefix.severity = warning
+dotnet_naming_rule.private_fields_must_use_camel_case_and_underscore_prefix.symbols = private_field_symbols
+dotnet_naming_rule.private_fields_must_use_camel_case_and_underscore_prefix.style = private_field_case
+dotnet_naming_symbols.private_field_symbols.applicable_accessibilities = private
+dotnet_naming_symbols.private_field_symbols.applicable_kinds = field
+dotnet_naming_style.private_field_case.capitalization = camel_case
+dotnet_naming_style.private_field_case.required_prefix  = _
+
+# Prefix interface names with I
+dotnet_naming_rule.interfaces_must_use_camel_case_and_I_prefix.severity = warning
+dotnet_naming_rule.interfaces_must_use_camel_case_and_I_prefix.symbols = interface_symbols
+dotnet_naming_rule.interfaces_must_use_camel_case_and_I_prefix.style = interface_case
+dotnet_naming_symbols.interface_symbols.applicable_kinds = interface
+dotnet_naming_style.interface_case.capitalization = pascal_case
+dotnet_naming_style.interface_case.required_prefix  = I
+
+# Explicitly state visibility with access modifiers, even if this restates the default visibility
+dotnet_style_require_accessibility_modifiers = always
+
+# Maintain strict indentation using tabs only. Do not use spaces for formatting
+indent_style = tab
+
+# Group all framework namespaces together, followed by third-party and custom namespaces
+dotnet_sort_system_directives_first = true
+
+# Always place an open curly brace ({) in a new line, except for single line property accessors and auto-implemented properties
+csharp_new_line_before_open_brace = anonymous_methods, anonymous_types, control_blocks, events, indexers, lambdas, local_functions, methods, object_collection, types
+
+# Always use C# keywords rather than their corresponding classes in the System namespace.
+dotnet_style_predefined_type_for_locals_parameters_members = true:warning
+dotnet_style_predefined_type_for_member_access = true:warning
+
+# Always use a curly brace scope in an if statement, even if it conditions a single statement.
+csharp_prefer_braces = true:warning
+
+# Do not use the var keyword on built-in types such as int or object, or their Nullable variants.
+csharp_style_var_for_built_in_types = false:warning
+
+# Avoid using the var keyword if you cannot easily determine the type of the variable.
+csharp_style_var_elsewhere = false:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+
+# Not part of our coding standards, but a good thing to cleanup
+trim_trailing_whitespace = true

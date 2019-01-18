@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoxAuto.Vince.InventoryManagementService.SnsPublisher</name>
+    </assembly>
+    <members>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.EventPublishingConfiguration">
+            <summary>
+            Configuration object for events in IMS.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.EventPublishingConfiguration.InventoryViewEventsTopicArn">
+            <summary>
+            Gets or sets the ARN for the SNS topic which will publish inventory view change events.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.EventPublishingConfiguration.InventoryDetailEventsTopicArn">
+            <summary>
+            Gets or sets the ARN for the SNS topic which will publish inventory detail change events.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.EventPublishingConfiguration.InventoryEventsTopicArn">
+            <summary>
+            Gets or sets the ARN for the SNS topic which will publish inventory change events.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.EventPublishingConfiguration.DescriptionEventsTopicArn">
+            <summary>
+            Gets or sets the ARN for the SNS topic which will publish description change events.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.EventPublishingConfiguration.PricingEventsTopicArn">
+            <summary>
+            Gets or sets the ARN for the SNS topic which will publish pricing change events.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.EventPublishingConfiguration.VehicleEventsTopicArn">
+            <summary>
+            Gets or sets the ARN for the SNS topic which will publish vehicle change events.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.EventPublishingConfiguration.CustomFieldEventsTopicArn">
+            <summary>
+            Gets or sets the ARN for the SNS topic which will publish custom field change events.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Extensions.ObjectExtensions">
+            <summary>
+            Extension methods for objects.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Extensions.ObjectExtensions.ToDictionary(System.Object)">
+            <summary>
+            Converts an object to a dictionary of key and value string.
+            </summary>
+            <param name="obj">The object to convert</param>
+            <returns>A dictionary representation of the input</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.EventMessageBase`1">
+            <summary>
+            The base class for events emitted by the Inventory Management Service.
+            </summary>
+            <typeparam name="TPayload">The type of the payload emitted in the event</typeparam>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.EventMessageBase`1.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.EventMessageBase`1"/> class.
+            </summary>
+            <param name="eventName">The name of the event type</param>
+            <param name="partitionKey">The identifier for the event resource</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.EventMessageBase`1.Name">
+            <summary>
+            Gets or sets the name of the event type.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.EventMessageBase`1.PartitionKey">
+            <summary>
+            Gets or sets the identifier for the event resource.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.EventMessageBase`1.Payload">
+            <summary>
+            Gets or sets the payload data emitted in the event.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.EventMessageBase`1.ToCarvimEvent">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.EventMessageBase`1.ToMessageAttributes">
+            <inheritdoc />
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.IEventMessage">
+            <summary>
+            Interface for Inventory Management Service event messages to be published.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.IEventMessage.ToCarvimEvent">
+            <summary>
+            Converts this event to a CARVIM messaging platform event.
+            </summary>
+            <returns>The CARVIM messaging platform event</returns>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.IEventMessage.ToMessageAttributes">
+            <summary>
+            Creates the message attributes to be applied to the SNS message that can be filtered on in subscriptions.
+            </summary>
+            <returns>A collection of SNS message attributes</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventAttributes">
+            <summary>
+            Metadata associated with an Inventory change event.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventAttributes.CorrelationId">
+            <summary>
+            Gets or sets an identifier that can be used to correlate emitted events to the request that triggered them.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventAttributes.Namespace">
+            <summary>
+            Gets or sets a namespace for the event.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventAttributes.EntityId">
+            <summary>
+            Gets or sets the identifier of the entity context to execute the request in.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventAttributes.VIN">
+            <summary>
+            Gets or sets the vehicle identification number of the inventory associated with the event.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventAttributes.StockNumber">
+            <summary>
+            Gets or sets the stock number of the inventory associated with the event.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventAttributes.Source">
+            <summary>
+            Gets or sets the source of the change that triggered the event.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventMessage">
+            <summary>
+            The event message emitted by all Inventory related operations in the Inventory Management Service.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventMessage.#ctor(System.String,System.String,CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventPayload,CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventAttributes,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventMessage"/> class.
+            </summary>
+            <param name="eventName">The name of the event type</param>
+            <param name="partitionKey">The id of the affected event resource</param>
+            <param name="payload">The payload data of the event</param>
+            <param name="attributes">Attributes associated with the event</param>
+            <param name="otherProps">Custom props that are event specific</param>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventMessage.Attributes">
+            <summary>
+            Gets the metadata attributes associated with the event.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventMessage.OtherProps">
+            <summary>
+            Gets
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventMessage.ToCarvimEvent">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventMessage.ToMessageAttributes">
+            <inheritdoc />
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventPayload">
+            <summary>
+            The payload for an inventory change event.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.InventoryEventPayload.Href">
+            <summary>
+            Gets or sets an Href URI that can be used to retrieve the resource.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.EventTopic">
+            <summary>
+            An enumeration of event topics.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.EventTopic.Inventory">
+            <summary>
+            An event topic for inventory
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.EventTopic.Vehicles">
+            <summary>
+            An event topic for vehicle
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.EventTopic.InventoryDetails">
+            <summary>
+            An event topic for inventory details
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.EventTopic.Pricing">
+            <summary>
+            An event topic for pricing
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.EventTopic.SellerComments">
+            <summary>
+            An event topic for seller comments
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.EventTopic.InventoryViews">
+            <summary>
+            An event topic for inventory views
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.EventTopic.CustomFieldValues">
+            <summary>
+            An event topic for custom fields
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.ISnsEventPublisherProvider">
+            <summary>
+            A provider class for <see cref="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.ISnsEventPublisher"/> instances.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.ISnsEventPublisherProvider.GetEventPublisher(CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.EventTopic)">
+            <summary>
+            Gets an <see cref="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.ISnsEventPublisher"/> instance for the given <paramref name="topic"/>.
+            </summary>
+            <param name="topic">The type of event to publish.</param>
+            <returns>An <see cref="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.ISnsEventPublisher"/> instance.</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.SnsEventPublisher">
+            <inheritdoc />
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.SnsEventPublisher._topicArn">
+            <summary>
+            The SNS topic ARN to publish messages to.
+            </summary>
+        </member>
+        <member name="F:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.SnsEventPublisher._snsClient">
+            <summary>
+            A client to publish SNS messages with.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.SnsEventPublisher.#ctor(System.String,Amazon.RegionEndpoint)">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.SnsEventPublisher"/> class.
+            </summary>
+            <param name="topicArn">The ARN of the sns topic to publish to</param>
+            <param name="region">The AWS region the sns topic is located</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.SnsEventPublisher.Publish(CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.IEventMessage)">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.SnsEventPublisher.Dispose">
+            <summary>
+            Disposes the disposable properties of this publisher.
+            </summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.SnsEventPublisherProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.SnsEventPublisherProvider.#ctor(Amazon.RegionEndpoint,Microsoft.Extensions.Options.IOptions{CoxAuto.Vince.InventoryManagementService.SnsPublisher.EventPublishingConfiguration})">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.SnsEventPublisherProvider"/> class.
+            </summary>
+            <param name="region">The AWS region.</param>
+            <param name="configuration">A configuration object for events in IMS.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.SnsEventPublisherProvider.GetEventPublisher(CoxAuto.Vince.InventoryManagementService.SnsPublisher.Publishing.EventTopic)">
+            <inheritdoc/>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.SnsPublisher.ISnsEventPublisher">
+            <summary>
+            An interface for publishing events from IMS.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.SnsPublisher.ISnsEventPublisher.Publish(CoxAuto.Vince.InventoryManagementService.SnsPublisher.Messages.IEventMessage)">
+            <summary>
+            Publish an event.
+            </summary>
+            <param name="eventMessage">The event to publish.</param>
+            <returns>The response from Amazon.</returns>
+        </member>
+    </members>
+</doc>

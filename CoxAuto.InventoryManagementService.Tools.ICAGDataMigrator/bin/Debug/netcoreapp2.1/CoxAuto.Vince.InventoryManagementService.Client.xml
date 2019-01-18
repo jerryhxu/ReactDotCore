@@ -1,0 +1,1284 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoxAuto.Vince.InventoryManagementService.Client</name>
+    </assembly>
+    <members>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Client.BaseClient">
+            <summary>
+            Base class that all clients inherit from
+            </summary>
+            TODO: RESERVED FOR USE LATER
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.BaseClient.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:CoxAuto.Vince.InventoryManagementService.Client.BaseClient"/> class.
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IDiagnosticsClient.InfoAsync(System.Threading.CancellationToken)">
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IDiagnosticsClient.PingAsync(System.Threading.CancellationToken)">
+            <summary>Ping diagnostic</summary>
+            <returns>Returns the latest time on that machine</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Client.DiagnosticsClient">
+            <summary>
+            DiagnosticsClient
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.DiagnosticsClient.InfoAsync(System.Threading.CancellationToken)">
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.DiagnosticsClient.PingAsync(System.Threading.CancellationToken)">
+            <summary>Ping diagnostic</summary>
+            <returns>Returns the latest time on that machine</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryClient.CreateAsync(System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.CompositeInventoryWriteModel,System.Threading.CancellationToken)">
+            <summary>Creates a new inventory document</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="x_Correlation_Id">An identifier that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventory">The inventory document to store</param>
+            <returns>The requested inventory document has been created. (URL provided in the Location header)</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryClient.BatchGetAsync(CoxAuto.Vince.InventoryManagementService.Client.CompositeInventoryBatchRequest,System.String,System.Threading.CancellationToken)">
+            <summary>Get many Inventory documents</summary>
+            <param name="batchRequest">Shape with the requested InventoryIds for each EntityId</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryClient.RetrieveAsync(System.String,System.Guid,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the inventory document</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="version">Version to retrieve</param>
+            <returns>Provides requested inventory document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryClient.ReplaceAsync(System.String,System.String,System.Guid,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.CompositeInventoryWriteModel,System.Threading.CancellationToken)">
+            <summary>Replaces the inventory document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to replace</param>
+            <param name="x_Correlation_Id">An identifier that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventory">The inventory document to store</param>
+            <returns>The requested inventory document has been updated</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryClient.RemoveAsync(System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the inventory document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to remove</param>
+            <param name="x_Correlation_Id">An identifier that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>The requested inventory document has been deleted or does not exist</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryClient.PatchAsync(System.String,System.String,System.Guid,System.String,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the inventory document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to modify</param>
+            <param name="x_Correlation_Id">An identifier that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchInventory">The JSON patch (see https://tools.ietf.org/html/rfc6902)</param>
+            <returns>The requested inventory document has been updated</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryClient.RetrieveAuditVersionsAsync(System.String,System.Guid,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves all versions of the inventory document and subdocuments</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to retrieve</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides requested inventory document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryClient.DeleteAsync(System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Marks inventory as deleted</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to modify</param>
+            <param name="x_Correlation_Id">An identifier that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryClient.RecoverAsync(System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Recovers inventory</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to modify</param>
+            <param name="x_Correlation_Id">An identifier that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryClient.SellAsync(System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Sets a vehicle to sold</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to modify</param>
+            <param name="x_Correlation_Id">An identifier that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>The requested inventory document has been updated</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryClient.RetrieveInventoryByEntityAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the inventory ids (temporary until query service is finished)</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides requested inventory document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryClient">
+            <summary>
+            InventoryClient
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryClient.CreateAsync(System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.CompositeInventoryWriteModel,System.Threading.CancellationToken)">
+            <summary>Creates a new inventory document</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="x_Correlation_Id">An identifier that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventory">The inventory document to store</param>
+            <returns>The requested inventory document has been created. (URL provided in the Location header)</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryClient.BatchGetAsync(CoxAuto.Vince.InventoryManagementService.Client.CompositeInventoryBatchRequest,System.String,System.Threading.CancellationToken)">
+            <summary>Get many Inventory documents</summary>
+            <param name="batchRequest">Shape with the requested InventoryIds for each EntityId</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryClient.RetrieveAsync(System.String,System.Guid,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the inventory document</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="version">Version to retrieve</param>
+            <returns>Provides requested inventory document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryClient.ReplaceAsync(System.String,System.String,System.Guid,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.CompositeInventoryWriteModel,System.Threading.CancellationToken)">
+            <summary>Replaces the inventory document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to replace</param>
+            <param name="x_Correlation_Id">An identifier that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventory">The inventory document to store</param>
+            <returns>The requested inventory document has been updated</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryClient.RemoveAsync(System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the inventory document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to remove</param>
+            <param name="x_Correlation_Id">An identifier that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>The requested inventory document has been deleted or does not exist</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryClient.PatchAsync(System.String,System.String,System.Guid,System.String,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the inventory document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to modify</param>
+            <param name="x_Correlation_Id">An identifier that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchInventory">The JSON patch (see https://tools.ietf.org/html/rfc6902)</param>
+            <returns>The requested inventory document has been updated</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryClient.RetrieveAuditVersionsAsync(System.String,System.Guid,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves all versions of the inventory document and subdocuments</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to retrieve</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides requested inventory document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryClient.DeleteAsync(System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Marks inventory as deleted</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to modify</param>
+            <param name="x_Correlation_Id">An identifier that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryClient.RecoverAsync(System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Recovers inventory</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to modify</param>
+            <param name="x_Correlation_Id">An identifier that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryClient.SellAsync(System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Sets a vehicle to sold</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="inventoryId">The id of the inventory document to modify</param>
+            <param name="x_Correlation_Id">An identifier that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>The requested inventory document has been updated</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryClient.RetrieveInventoryByEntityAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the inventory ids (temporary until query service is finished)</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides requested inventory document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryTransferClient.CreateInventoryTransferOperationAsync(System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.InventoryTransferModel,System.Threading.CancellationToken)">
+            <summary>Creates a new inventory-transfer operation</summary>
+            <param name="if_Match">The version to transfer</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventoryTransferModel">the model</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryTransferClient.RetrieveInventoryAsync(System.Guid,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the inventory document</summary>
+            <param name="operationId">The id of the inventory transfer document to retrieve</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides requested inventory document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryTransferClient.CreateInventoryTransferOperationAsync(System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.InventoryTransferModel,System.Threading.CancellationToken)">
+            <summary>Creates a new inventory-transfer operation</summary>
+            <param name="if_Match">The version to transfer</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventoryTransferModel">the model</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryTransferClient.RetrieveInventoryAsync(System.Guid,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the inventory document</summary>
+            <param name="operationId">The id of the inventory transfer document to retrieve</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides requested inventory document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryViewClient.RetrieveInventoryViewsAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the inventory-view documents available to the given Entity context</summary>
+            <param name="x_Entity_Id">The ID of the current Entity context</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the inventory-views available in the current entity context</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryViewClient.CreateAsync(System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.InventoryViewCreateModel,System.Threading.CancellationToken)">
+            <summary>Creates a new inventory-view document</summary>
+            <param name="x_Entity_Id">The ID of the current Entity context</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventoryView">The inventory-view document to store</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryViewClient.RetrieveAsync(System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the inventory-view document</summary>
+            <param name="x_Entity_Id">The ID of the current Entity context</param>
+            <param name="inventoryViewId">The id of the inventory-view document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the inventory-view</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryViewClient.ReplaceAsync(System.String,System.String,System.Guid,System.String,CoxAuto.Vince.InventoryManagementService.Client.InventoryViewUpdateModel,System.Threading.CancellationToken)">
+            <summary>Replaces the inventory-view document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the current Entity context</param>
+            <param name="inventoryViewId">The id of the inventory-view document to replace</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventoryView">The inventory-view document to store</param>
+            <returns>No Content. NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryViewClient.RemoveAsync(System.String,System.String,System.Guid,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the inventory-view document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the current Entity context</param>
+            <param name="inventoryViewId">The id of the inventory-view document to remove</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>No Content if the item to delete exists or does not exist</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryViewClient.PatchAsync(System.String,System.String,System.Guid,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the inventory-view document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the current Entity context</param>
+            <param name="inventoryViewId">The id of the inventory-view document to modify</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchInventoryView">The JSON patch ( see https://tools.ietf.org/html/rfc6902 )</param>
+            <returns>No Content. NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryViewClient.RetrieveTenantInventoryViewsAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves all child entity inventory-view documents in the given Entity context's tenant</summary>
+            <param name="x_Entity_Id">The ID of the current Entity context</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the inventory-views available in the current entity context</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryViewClient">
+            <summary>
+            InventoryViewClient
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryViewClient.RetrieveInventoryViewsAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the inventory-view documents available to the given Entity context</summary>
+            <param name="x_Entity_Id">The ID of the current Entity context</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the inventory-views available in the current entity context</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryViewClient.CreateAsync(System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.InventoryViewCreateModel,System.Threading.CancellationToken)">
+            <summary>Creates a new inventory-view document</summary>
+            <param name="x_Entity_Id">The ID of the current Entity context</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventoryView">The inventory-view document to store</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryViewClient.RetrieveAsync(System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the inventory-view document</summary>
+            <param name="x_Entity_Id">The ID of the current Entity context</param>
+            <param name="inventoryViewId">The id of the inventory-view document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the inventory-view</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryViewClient.ReplaceAsync(System.String,System.String,System.Guid,System.String,CoxAuto.Vince.InventoryManagementService.Client.InventoryViewUpdateModel,System.Threading.CancellationToken)">
+            <summary>Replaces the inventory-view document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the current Entity context</param>
+            <param name="inventoryViewId">The id of the inventory-view document to replace</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventoryView">The inventory-view document to store</param>
+            <returns>No Content. NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryViewClient.RemoveAsync(System.String,System.String,System.Guid,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the inventory-view document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the current Entity context</param>
+            <param name="inventoryViewId">The id of the inventory-view document to remove</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>No Content if the item to delete exists or does not exist</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryViewClient.PatchAsync(System.String,System.String,System.Guid,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the inventory-view document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the current Entity context</param>
+            <param name="inventoryViewId">The id of the inventory-view document to modify</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchInventoryView">The JSON patch ( see https://tools.ietf.org/html/rfc6902 )</param>
+            <returns>No Content. NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryViewClient.RetrieveTenantInventoryViewsAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves all child entity inventory-view documents in the given Entity context's tenant</summary>
+            <param name="x_Entity_Id">The ID of the current Entity context</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the inventory-views available in the current entity context</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IVehicleClient.CreateAsync(System.String,System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.VehicleWriteModel,System.Threading.CancellationToken)">
+            <summary>Creates a new vehicle document in an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="vehicle">The vehicle document to store</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IVehicleClient.RetrieveAsync(System.String,System.String,System.Guid,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the vehicle document from an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="vehicleId">The id of the vehicle document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the vehicle document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IVehicleClient.ReplaceAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.VehicleWriteModel,System.Threading.CancellationToken)">
+            <summary>Replaces the vehicle document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="vehicleId">The id of the vehicle document to replace</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="vehicle">The vehicle document to store</param>
+            <returns>No Content.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IVehicleClient.RemoveAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the vehicle document from an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="vehicleId">The id of the vehicle document to remove</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>No Content if the item to delete exists or does not exist</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IVehicleClient.PatchAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the vehicle document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="vehicleId">The id of the vehicle document to modify</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchVehicle">The JSON patch (see https://tools.ietf.org/html/rfc6902)</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Client.VehicleClient">
+            <summary>
+            VehicleClient
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.VehicleClient.CreateAsync(System.String,System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.VehicleWriteModel,System.Threading.CancellationToken)">
+            <summary>Creates a new vehicle document in an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="vehicle">The vehicle document to store</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.VehicleClient.RetrieveAsync(System.String,System.String,System.Guid,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the vehicle document from an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="vehicleId">The id of the vehicle document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the vehicle document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.VehicleClient.ReplaceAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.VehicleWriteModel,System.Threading.CancellationToken)">
+            <summary>Replaces the vehicle document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="vehicleId">The id of the vehicle document to replace</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="vehicle">The vehicle document to store</param>
+            <returns>No Content.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.VehicleClient.RemoveAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the vehicle document from an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="vehicleId">The id of the vehicle document to remove</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>No Content if the item to delete exists or does not exist</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.VehicleClient.PatchAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the vehicle document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="vehicleId">The id of the vehicle document to modify</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchVehicle">The JSON patch (see https://tools.ietf.org/html/rfc6902)</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.ICustomFieldValuesClient.CreateAsync(System.String,System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.CustomFieldValuesModel,System.Threading.CancellationToken)">
+            <summary>Creates a new custom fields document in an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="customFields">The custom fields document to store</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.ICustomFieldValuesClient.RetrieveAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the custom fields document from an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="customFieldsId">The id of the custom fields document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the customFields document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.ICustomFieldValuesClient.ReplaceAsync(System.String,System.String,System.String,System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.CustomFieldValuesModel,System.Threading.CancellationToken)">
+            <summary>Replaces the custom fields document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="customFieldsId">The id of the custom fields document to replace</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="customFields">The custom fields document to store</param>
+            <returns>No Content.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.ICustomFieldValuesClient.RemoveAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the custom fields document from an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="customFieldsId">The id of the custom fields document to remove</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>No Content if the item to delete exists or does not exist</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.ICustomFieldValuesClient.PatchAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the custom fields document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="customFieldsId">The id of the custom fields document to modify</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchCustomFieldValues">The JSON patch (see https://tools.ietf.org/html/rfc6902)</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.CustomFieldValuesClient.CreateAsync(System.String,System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.CustomFieldValuesModel,System.Threading.CancellationToken)">
+            <summary>Creates a new custom fields document in an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="customFields">The custom fields document to store</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.CustomFieldValuesClient.RetrieveAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the custom fields document from an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="customFieldsId">The id of the custom fields document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the customFields document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.CustomFieldValuesClient.ReplaceAsync(System.String,System.String,System.String,System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.CustomFieldValuesModel,System.Threading.CancellationToken)">
+            <summary>Replaces the custom fields document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="customFieldsId">The id of the custom fields document to replace</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="customFields">The custom fields document to store</param>
+            <returns>No Content.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.CustomFieldValuesClient.RemoveAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the custom fields document from an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="customFieldsId">The id of the custom fields document to remove</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>No Content if the item to delete exists or does not exist</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.CustomFieldValuesClient.PatchAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the custom fields document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="customFieldsId">The id of the custom fields document to modify</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchCustomFieldValues">The JSON patch (see https://tools.ietf.org/html/rfc6902)</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryEntryClient.CreateAsync(System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.InventoryEntryWriteModel,System.Threading.CancellationToken)">
+            <summary>Creates a new inventory entry document</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory entry</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventoryEntry">The inventory entry document to store</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryEntryClient.RetrieveAsync(System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the inventory entry document</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory entry</param>
+            <param name="inventoryId">The id of the inventory entry document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="version">Version of the inventory entry</param>
+            <returns>Provides the inventory entry</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryEntryClient.ReplaceAsync(System.String,System.String,System.Guid,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.InventoryEntryWriteModel,System.Threading.CancellationToken)">
+            <summary>Replaces the inventory entry document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory entry</param>
+            <param name="inventoryId">The ID of the inventory entry document to replace</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventoryEntry">The inventory entry document to store</param>
+            <returns>No Content.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryEntryClient.RemoveAsync(System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the inventory entry document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory entry</param>
+            <param name="inventoryId">The ID of the inventory entry document to remove</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>The item has been deleted or does not exist in the first place</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryEntryClient.PatchAsync(System.String,System.String,System.Guid,System.String,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the inventory entry document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory entry</param>
+            <param name="inventoryId">The ID of the inventory entry document to modify</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchInventoryEntry">The JSON patch (see https://tools.ietf.org/html/rfc6902)</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryEntryClient">
+            <summary>
+            InventoryEntryClient
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryEntryClient.CreateAsync(System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.InventoryEntryWriteModel,System.Threading.CancellationToken)">
+            <summary>Creates a new inventory entry document</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory entry</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventoryEntry">The inventory entry document to store</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryEntryClient.RetrieveAsync(System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the inventory entry document</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory entry</param>
+            <param name="inventoryId">The id of the inventory entry document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="version">Version of the inventory entry</param>
+            <returns>Provides the inventory entry</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryEntryClient.ReplaceAsync(System.String,System.String,System.Guid,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.InventoryEntryWriteModel,System.Threading.CancellationToken)">
+            <summary>Replaces the inventory entry document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory entry</param>
+            <param name="inventoryId">The ID of the inventory entry document to replace</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventoryEntry">The inventory entry document to store</param>
+            <returns>No Content.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryEntryClient.RemoveAsync(System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the inventory entry document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory entry</param>
+            <param name="inventoryId">The ID of the inventory entry document to remove</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>The item has been deleted or does not exist in the first place</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryEntryClient.PatchAsync(System.String,System.String,System.Guid,System.String,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the inventory entry document</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory entry</param>
+            <param name="inventoryId">The ID of the inventory entry document to modify</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchInventoryEntry">The JSON patch (see https://tools.ietf.org/html/rfc6902)</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryDetailClient.CreateAsync(System.String,System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.InventoryDetailModel,System.Threading.CancellationToken)">
+            <summary>Creates a new inventory-detail document in an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventoryDetail">The inventory detail document to store</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryDetailClient.RetrieveAsync(System.String,System.String,System.Guid,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the inventory-detail document from an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="inventoryDetailId">The id of the inventory-detail document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the inventory-detail</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryDetailClient.ReplaceAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.InventoryDetailModel,System.Threading.CancellationToken)">
+            <summary>Replaces the inventory-detail document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="inventoryDetailId">The id of the inventory-detail document to replace</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventoryDetail">The inventory-detail document to store</param>
+            <returns>No Content.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryDetailClient.RemoveAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the inventory-detail document from an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="inventoryDetailId">The id of the inventory-detail document to remove</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>No Content if the item to delete exists or does not exist</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IInventoryDetailClient.PatchAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the inventory-detail document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="inventoryDetailId">The id of the inventory-detail document to modify</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchInventoryDetail">The JSON patch ( see https://tools.ietf.org/html/rfc6902 )</param>
+            <returns>No Content.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryDetailClient">
+            <summary>
+            InventoryDetailClient
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryDetailClient.CreateAsync(System.String,System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.InventoryDetailModel,System.Threading.CancellationToken)">
+            <summary>Creates a new inventory-detail document in an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventoryDetail">The inventory detail document to store</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryDetailClient.RetrieveAsync(System.String,System.String,System.Guid,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the inventory-detail document from an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="inventoryDetailId">The id of the inventory-detail document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the inventory-detail</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryDetailClient.ReplaceAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.InventoryDetailModel,System.Threading.CancellationToken)">
+            <summary>Replaces the inventory-detail document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="inventoryDetailId">The id of the inventory-detail document to replace</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="inventoryDetail">The inventory-detail document to store</param>
+            <returns>No Content.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryDetailClient.RemoveAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the inventory-detail document from an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="inventoryDetailId">The id of the inventory-detail document to remove</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>No Content if the item to delete exists or does not exist</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryDetailClient.PatchAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the inventory-detail document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="inventoryDetailId">The id of the inventory-detail document to modify</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchInventoryDetail">The JSON patch ( see https://tools.ietf.org/html/rfc6902 )</param>
+            <returns>No Content.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IPricesClient.CreateAsync(System.String,System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.PricesModel,System.Threading.CancellationToken)">
+            <summary>Creates a new prices document in an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="prices">The prices document to store</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IPricesClient.RetrieveAsync(System.String,System.String,System.Guid,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the prices document from an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="pricesId">The id of the prices document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the prices document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IPricesClient.ReplaceAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.PricesModel,System.Threading.CancellationToken)">
+            <summary>Replaces the prices document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="pricesId">The id of the prices document to replace</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="prices">The prices document to store</param>
+            <returns>No Content.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IPricesClient.RemoveAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the prices document from an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="pricesId">The id of the prices document to remove</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>No Content if the item to delete exists or does not exist</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.IPricesClient.PatchAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the prices document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="pricesId">The id of the prices document to modify</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchPrices">The JSON patch (see https://tools.ietf.org/html/rfc6902)</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Client.PricesClient">
+            <summary>
+            PricesClient
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.PricesClient.CreateAsync(System.String,System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.PricesModel,System.Threading.CancellationToken)">
+            <summary>Creates a new prices document in an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="prices">The prices document to store</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.PricesClient.RetrieveAsync(System.String,System.String,System.Guid,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the prices document from an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="pricesId">The id of the prices document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the prices document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.PricesClient.ReplaceAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.PricesModel,System.Threading.CancellationToken)">
+            <summary>Replaces the prices document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="pricesId">The id of the prices document to replace</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="prices">The prices document to store</param>
+            <returns>No Content.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.PricesClient.RemoveAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the prices document from an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="pricesId">The id of the prices document to remove</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>No Content if the item to delete exists or does not exist</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.PricesClient.PatchAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the prices document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="pricesId">The id of the prices document to modify</param>
+            <param name="x_Correlation_Id">An ID that can be used to correlate this operation to emitted events</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchPrices">The JSON patch (see https://tools.ietf.org/html/rfc6902)</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.ISellerCommentsClient.CreateAsync(System.String,System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.SellerCommentsModel,System.Threading.CancellationToken)">
+            <summary>Creates a new seller-comments document in an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="sellerComments">The seller-comments document to store</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.ISellerCommentsClient.RetrieveAsync(System.String,System.String,System.Guid,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the seller-comments document from an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="sellerCommentsId">The id of the seller-comments document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the sellerComments document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.ISellerCommentsClient.ReplaceAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.SellerCommentsModel,System.Threading.CancellationToken)">
+            <summary>Replaces the seller-comments document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="sellerCommentsId">The id of the seller-comments document to replace</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="sellerComments">The seller-comments document to store</param>
+            <returns>No Content.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.ISellerCommentsClient.RemoveAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the seller-comments document from an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="sellerCommentsId">The id of the seller-comments document to remove</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>No Content if the item to delete exists or does not exist</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.ISellerCommentsClient.PatchAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the seller-comments document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="sellerCommentsId">The id of the seller-comments document to modify</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchSellerComments">The JSON patch (see https://tools.ietf.org/html/rfc6902)</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Client.SellerCommentsClient">
+            <summary>
+            SellerCommentsClient
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.SellerCommentsClient.CreateAsync(System.String,System.String,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.SellerCommentsModel,System.Threading.CancellationToken)">
+            <summary>Creates a new seller-comments document in an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="sellerComments">The seller-comments document to store</param>
+            <returns>Created.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.SellerCommentsClient.RetrieveAsync(System.String,System.String,System.Guid,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Retrieves the seller-comments document from an inventory-entry</summary>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="sellerCommentsId">The id of the seller-comments document to retrieve</param>
+            <param name="if_None_Match">Allow the user to provide an e-tag to query if the data has changed</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>Provides the sellerComments document</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.SellerCommentsClient.ReplaceAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,CoxAuto.Vince.InventoryManagementService.Client.SellerCommentsModel,System.Threading.CancellationToken)">
+            <summary>Replaces the seller-comments document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="sellerCommentsId">The id of the seller-comments document to replace</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="sellerComments">The seller-comments document to store</param>
+            <returns>No Content.  NOTE THE URL TO THE NEW DATA IS PROVIDED IN THE "Location" RESPONSE HEADER!</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.SellerCommentsClient.RemoveAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Removes the seller-comments document from an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="sellerCommentsId">The id of the seller-comments document to remove</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <returns>No Content if the item to delete exists or does not exist</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.SellerCommentsClient.PatchAsync(System.String,System.String,System.String,System.Guid,System.String,System.String,System.Collections.Generic.IEnumerable{CoxAuto.Vince.InventoryManagementService.Client.Operation},System.Threading.CancellationToken)">
+            <summary>Patches the seller-comments document in an inventory-entry</summary>
+            <param name="if_Match">Used for Check And Store to verify the data has not changed</param>
+            <param name="x_Entity_Id">The ID of the Entity containing the inventory-entry</param>
+            <param name="link">The reference to the inventory-entry document see https://www.greenbytes.de/tech/webdav/draft-nottingham-http-link-header-00.html#rfc.section.3 for more details</param>
+            <param name="sellerCommentsId">The id of the seller-comments document to modify</param>
+            <param name="x_Correlation_Id">Optional correlationId</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional Cox Auto correlationId</param>
+            <param name="patchSellerComments">The JSON patch (see https://tools.ietf.org/html/rfc6902)</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceResponse">
+            <summary>
+            A returned response for a request that returns a 2xx HTTP status code
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceResponse.TraceId">
+            <summary>
+            Gets the trace ID used to identify the call
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceResponse.Location">
+            <summary>
+            Gets the location of the resource requested
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceResponse.ETag">
+            <summary>
+            Gets the ETag
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceResponse.HttpStatusCode">
+            <summary>
+            Gets an HTTP status code that was returned from the request
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceResponse.LocationId">
+            <summary>
+            Gets the ID from a valid <see cref="P:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceResponse.Location"/>
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceResponse.GetHeader(System.String)">
+            <summary>
+            Extracts the header information safely
+            </summary>
+            <param name="headerName">The name of the header to retrieve.</param>
+            <returns>The header value or <c>null</c> if the header could not be found.</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException">
+            <summary>
+            The common exception thrown by requests of this library due to a non 2xx response to a call.
+            The http response information is available form the various properties.
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException.TraceId">
+            <summary>
+            Gets the trace ID used to identify the call
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException.Location">
+            <summary>
+            Gets the location of the resource requested
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException.ETag">
+            <summary>
+            Gets the ETag
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException.HttpStatusCode">
+            <summary>
+            Gets an HTTP status code that was returned from the request
+            </summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException.LocationId">
+            <summary>
+            Gets the ID from a valid <see cref="P:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException.Location"/>
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.InventoryManagementServiceException.GetHeader(System.String)">
+            <summary>
+            Extracts the header information safely
+            </summary>
+            <param name="headerName">The name of the header to retrieve.</param>
+            <returns>The header value or <c>null</c> if the header could not be found.</returns>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.Client.HttpClientExtensionMethods">
+            <summary>
+            Extension methods for <see cref="T:System.Net.Http.HttpClient"/>
+            </summary>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.Client.HttpClientExtensionMethods.WithBearerToken(System.Net.Http.HttpClient,System.String)">
+            <summary>
+            Adds the bearer token to the client
+            </summary>
+            <param name="client">The client that will receive the token</param>
+            <param name="bearerToken">The bearer token</param>
+        </member>
+    </members>
+</doc>

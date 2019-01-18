@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client</name>
+    </assembly>
+    <members>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiDiagnosticsPingGetAsync(System.Threading.CancellationToken)">
+            <summary>Ping diagnostic</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiDiagnosticsEnvironmentNameGetAsync(System.Threading.CancellationToken)">
+            <summary>Returns the active environment for the server</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiDiagnosticsDynamoTableNameGetAsync(System.Threading.CancellationToken)">
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiDiagnosticsExceptionGetAsync(System.Threading.CancellationToken)">
+            <summary>Throws an exception, for testing purposes</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiDiagnosticsTestLoggingGetAsync(System.Nullable{CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.LogLevel},System.Threading.CancellationToken)">
+            <summary>Logs something, for testing purposes</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiDiagnosticsPropertiesGetAsync(System.Threading.CancellationToken)">
+            <summary>View VehicleProperties cache</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiDiagnosticsPropertiesPostAsync(System.Threading.CancellationToken)">
+            <summary>Force reload VehicleProperties cache</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiDiagnosticsMetricsGetAsync(System.Threading.CancellationToken)">
+            <summary>Get Metrics for Prometheus scrape.</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiThingPropertiesGetAsync(System.Threading.CancellationToken)">
+            <summary>Gets vehicle properties</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiThingsIdByResourceIdAuditVersionsGetAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Get property level audit info for a thing by id</summary>
+            <param name="resourceId">The thing ID</param>
+            <param name="tenantId">The cam dealer ID of the requester</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiThingsIdByResourceIdAuditByPropertyNameGetAsync(System.String,System.String,System.String,System.Nullable{System.Int64},System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>Get property level audit info for a thing by id</summary>
+            <param name="resourceId">The thing ID</param>
+            <param name="propertyName">Property to show audit history for</param>
+            <param name="tenantId">The cam dealer ID of the requester</param>
+            <param name="version">Optional version of to show</param>
+            <param name="after">Optional end cursor of the previous page of vehicles. Shows vehicles after the cursor</param>
+            <param name="take">Optional number of vehicles to return</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiThingsGetAsync(System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>Gets all things</summary>
+            <param name="after">Optional end cursor of the previous page of vehicles. Shows vehicles after the cursor</param>
+            <param name="take">Optional number of vehicles to return</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiThingsPutAsync(CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleUpdateRestRequest,System.String,System.Threading.CancellationToken)">
+            <summary>Clobber update a thing</summary>
+            <param name="request">Request body</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional CoxAutoCorrelationId for service to service tracing. Defaults to new guid.</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiThingsPostAsync(CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleCreateRestRequest,System.String,System.Threading.CancellationToken)">
+            <summary>Create a thing</summary>
+            <param name="request">Request body</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional CoxAutoCorrelationId for service to service tracing. Defaults to new guid.</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiThingsPatchAsync(CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleUpdatePatchRestRequest,System.String,System.Threading.CancellationToken)">
+            <summary>Update specified fields of a thing</summary>
+            <param name="request">Request Body</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional CoxAutoCorrelationId for service to service tracing. Defaults to new guid.</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiThingsIdByResourceIdGetAsync(System.String,System.String,System.Nullable{System.Int64},System.Threading.CancellationToken)">
+            <summary>Get a thing by ID</summary>
+            <param name="resourceId">The thing ID of the thing to return</param>
+            <param name="tenantId">Optional dealer ID of the requester</param>
+            <param name="version">Optional version in querystring, prefer ETag header</param>
+            <returns>Provides the thing for the given resourceId.</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiThingsIdByResourceIdDeleteAsync(System.String,System.String,System.String,System.String,System.Nullable{System.Int64},System.String,System.Threading.CancellationToken)">
+            <summary>Delete a thing</summary>
+            <param name="resourceId">The thing ID of the thing to return</param>
+            <param name="partnerId">Optional partner ID of the requester</param>
+            <param name="userId">Optional user ID of the requester</param>
+            <param name="reason">Optional reason</param>
+            <param name="version">Optional version in querystring, prefer ETag header</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional CoxAutoCorrelationId for service to service tracing. Defaults to new guid.</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.IVehicleSORusClient.ApiThingsIdByResourceIdHeadAsync(System.String,System.String,System.Nullable{System.Int64},System.Threading.CancellationToken)">
+            <summary>Get a thing's headers by ID (no content)</summary>
+            <param name="resourceId">The thing ID of the thing to return</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional dealer ID of the requester</param>
+            <param name="version">Optional version in querystring, prefer ETag header</param>
+            <returns>Provides the thing's headers for the given resourceId.</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiDiagnosticsPingGetAsync(System.Threading.CancellationToken)">
+            <summary>Ping diagnostic</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiDiagnosticsEnvironmentNameGetAsync(System.Threading.CancellationToken)">
+            <summary>Returns the active environment for the server</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiDiagnosticsDynamoTableNameGetAsync(System.Threading.CancellationToken)">
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiDiagnosticsExceptionGetAsync(System.Threading.CancellationToken)">
+            <summary>Throws an exception, for testing purposes</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiDiagnosticsTestLoggingGetAsync(System.Nullable{CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.LogLevel},System.Threading.CancellationToken)">
+            <summary>Logs something, for testing purposes</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiDiagnosticsPropertiesGetAsync(System.Threading.CancellationToken)">
+            <summary>View VehicleProperties cache</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiDiagnosticsPropertiesPostAsync(System.Threading.CancellationToken)">
+            <summary>Force reload VehicleProperties cache</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiDiagnosticsMetricsGetAsync(System.Threading.CancellationToken)">
+            <summary>Get Metrics for Prometheus scrape.</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiThingPropertiesGetAsync(System.Threading.CancellationToken)">
+            <summary>Gets vehicle properties</summary>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiThingsIdByResourceIdAuditVersionsGetAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>Get property level audit info for a thing by id</summary>
+            <param name="resourceId">The thing ID</param>
+            <param name="tenantId">The cam dealer ID of the requester</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiThingsIdByResourceIdAuditByPropertyNameGetAsync(System.String,System.String,System.String,System.Nullable{System.Int64},System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>Get property level audit info for a thing by id</summary>
+            <param name="resourceId">The thing ID</param>
+            <param name="propertyName">Property to show audit history for</param>
+            <param name="tenantId">The cam dealer ID of the requester</param>
+            <param name="version">Optional version of to show</param>
+            <param name="after">Optional end cursor of the previous page of vehicles. Shows vehicles after the cursor</param>
+            <param name="take">Optional number of vehicles to return</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiThingsGetAsync(System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>Gets all things</summary>
+            <param name="after">Optional end cursor of the previous page of vehicles. Shows vehicles after the cursor</param>
+            <param name="take">Optional number of vehicles to return</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiThingsPutAsync(CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleUpdateRestRequest,System.String,System.Threading.CancellationToken)">
+            <summary>Clobber update a thing</summary>
+            <param name="request">Request body</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional CoxAutoCorrelationId for service to service tracing. Defaults to new guid.</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiThingsPostAsync(CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleCreateRestRequest,System.String,System.Threading.CancellationToken)">
+            <summary>Create a thing</summary>
+            <param name="request">Request body</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional CoxAutoCorrelationId for service to service tracing. Defaults to new guid.</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiThingsPatchAsync(CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleUpdatePatchRestRequest,System.String,System.Threading.CancellationToken)">
+            <summary>Update specified fields of a thing</summary>
+            <param name="request">Request Body</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional CoxAutoCorrelationId for service to service tracing. Defaults to new guid.</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiThingsIdByResourceIdGetAsync(System.String,System.String,System.Nullable{System.Int64},System.Threading.CancellationToken)">
+            <summary>Get a thing by ID</summary>
+            <param name="resourceId">The thing ID of the thing to return</param>
+            <param name="tenantId">Optional dealer ID of the requester</param>
+            <param name="version">Optional version in querystring, prefer ETag header</param>
+            <returns>Provides the thing for the given resourceId.</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiThingsIdByResourceIdDeleteAsync(System.String,System.String,System.String,System.String,System.Nullable{System.Int64},System.String,System.Threading.CancellationToken)">
+            <summary>Delete a thing</summary>
+            <param name="resourceId">The thing ID of the thing to return</param>
+            <param name="partnerId">Optional partner ID of the requester</param>
+            <param name="userId">Optional user ID of the requester</param>
+            <param name="reason">Optional reason</param>
+            <param name="version">Optional version in querystring, prefer ETag header</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional CoxAutoCorrelationId for service to service tracing. Defaults to new guid.</param>
+            <returns>Success</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="M:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusClient.ApiThingsIdByResourceIdHeadAsync(System.String,System.String,System.Nullable{System.Int64},System.Threading.CancellationToken)">
+            <summary>Get a thing's headers by ID (no content)</summary>
+            <param name="resourceId">The thing ID of the thing to return</param>
+            <param name="x_CoxAuto_Correlation_Id">Optional dealer ID of the requester</param>
+            <param name="version">Optional version in querystring, prefer ETag header</param>
+            <returns>Provides the thing's headers for the given resourceId.</returns>
+            <exception cref="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleSORusException">A server side error occurred.</exception>
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestResponse">
+            <summary>REST Vehicle GetById response object</summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestResponse.Thing">
+            <summary>Vehicle</summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestResponse.Version">
+            <summary>Thing version</summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestResponse.ThisVersion">
+            <summary>Thing href to this version</summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestResponse.Href">
+            <summary>Thing href</summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestResponse.UpdatedOn">
+            <summary>Date Updated</summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestResponse.UpdatedBy">
+            <summary>System or application making the change</summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestResponse.UpdatedFor">
+            <summary>Gets or sets the user on whose behalf the change was made
+            This should typically be the jwt token subject field.</summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestResponse.PreviousVersion">
+            <summary>Gets or sets the reference to the previous version on the document.
+            If there is no previous version this value should be null.</summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestType">
+            <summary>REST view of a vehicle</summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestType.Id">
+            <summary>Id</summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestType.TenantId">
+            <summary>TenantId</summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehicleRestType.Properties">
+            <summary>Properties</summary>
+        </member>
+        <member name="T:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehiclePropertyRestType">
+            <summary>REST view of a vehicle property</summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehiclePropertyRestType.Value">
+            <summary>The actual value, what the VehicleSorus says it is</summary>
+        </member>
+        <member name="P:CoxAuto.Vince.InventoryManagementService.VehicleSORus.Client.VehiclePropertyRestType.AuditInfo">
+            <summary>Audit info for the most recent change of this property</summary>
+        </member>
+    </members>
+</doc>
