@@ -44,3 +44,4 @@ C:\CarVim\inventory-management-service\app\CoxAuto.InventoryManagementService.To
 C:\CarVim\inventory-management-service\app\CoxAuto.InventoryManagementService.Tools.ICAGDataMigrator\bin\Debug\netcoreapp2.1\CoxAuto.Vince.InventoryManagementService.WebRouting.pdb
 C:\CarVim\inventory-management-service\app\CoxAuto.InventoryManagementService.Tools.ICAGDataMigrator\bin\Debug\netcoreapp2.1\CoxAuto.Vince.InventoryManagementService.WebRouting.xml
 C:\CarVim\inventory-management-service\app\CoxAuto.InventoryManagementService.Tools.ICAGDataMigrator\obj\Debug\netcoreapp2.1\CoxAuto.InventoryManagementService.Tools.ICAGDataMigrator.csproj.CopyComplete
+C:\CarVim\inventory-management-service\app\CoxAuto.InventoryManagementService.Tools.ICAGDataMigrator\bin\Debug\netcoreapp2.1\appsettings.json
